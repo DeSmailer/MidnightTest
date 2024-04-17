@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class ShoppingListView : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ShoppingListItemView _shoppingListItemViewPrefab;
+    [SerializeField] private Transform _container;
+    [SerializeField] private ShoppingList _shoppingList;
+    [SerializeField] private CurrencyManager _currencyManager;
+
+    private void OnEnable()
     {
-        
+        Display();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Display()
     {
-        
+        foreach (var purchase in _shoppingList.Purchases)
+        {
+            ShoppingListItemView shoppingListItem = Instantiate(_shoppingListItemViewPrefab, _container);
+            shoppingListItem.Initialize(purchase, _currencyManager);
+        }
     }
 }
