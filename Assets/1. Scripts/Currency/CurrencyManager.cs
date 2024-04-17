@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CurrencyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private double _currency;
+    public double Currency => _currency;
+
+    public UnityEvent OnCurrencyCange;
+
+    public void AddCurrency(double count)
     {
-        
+        _currency += count;
+        OnCurrencyCange?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SubtractCurrency(double count)
     {
-        
+        _currency += count;
+        OnCurrencyCange?.Invoke();
     }
 }

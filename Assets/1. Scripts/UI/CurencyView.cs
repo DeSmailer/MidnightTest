@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CurencyView : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TMP_Text _currencyText;
+    [SerializeField] private CurrencyManager _currencyManager;
+
+    private void Awake()
     {
-        
+        _currencyManager.OnCurrencyCange.AddListener(Display);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Display();
+    }
+
+    public void Display()
+    {
+        _currencyText.text = CurrencyFormatDisplay.Display(_currencyManager.Currency);
     }
 }
