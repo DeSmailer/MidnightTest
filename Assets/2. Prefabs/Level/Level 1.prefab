@@ -858,7 +858,7 @@ PrefabInstance:
     - target: {fileID: 3786078938510227193, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3786078938510227193, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
@@ -903,10 +903,9 @@ PrefabInstance:
     - target: {fileID: 5131173547037755448, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
       propertyPath: m_Name
-      value: HobPositions (1)
+      value: HobPositions (0)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 344963348106608077, guid: 8ac9ebc937aad6342b6aebe7fde2cd81, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1057,7 +1056,12 @@ PrefabInstance:
     - target: {fileID: 5131173547037755448, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
       propertyPath: m_Name
-      value: HobPositions (5)
+      value: HobPositions (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236940249352564456, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
+        type: 3}
+      propertyPath: _serialNumberUponPurchase
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2065,7 +2069,12 @@ PrefabInstance:
     - target: {fileID: 5131173547037755448, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
       propertyPath: m_Name
-      value: HobPositions (3)
+      value: HobPositions (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236940249352564456, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
+        type: 3}
+      propertyPath: _serialNumberUponPurchase
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 344963348106608077, guid: 8ac9ebc937aad6342b6aebe7fde2cd81, type: 3}
@@ -2293,7 +2302,12 @@ PrefabInstance:
     - target: {fileID: 5131173547037755448, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
       propertyPath: m_Name
-      value: HobPositions (4)
+      value: HobPositions (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236940249352564456, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
+        type: 3}
+      propertyPath: _serialNumberUponPurchase
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 344963348106608077, guid: 8ac9ebc937aad6342b6aebe7fde2cd81, type: 3}
@@ -2595,7 +2609,12 @@ PrefabInstance:
     - target: {fileID: 5131173547037755448, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
         type: 3}
       propertyPath: m_Name
-      value: HobPositions (2)
+      value: HobPositions (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236940249352564456, guid: 8ac9ebc937aad6342b6aebe7fde2cd81,
+        type: 3}
+      propertyPath: _serialNumberUponPurchase
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 344963348106608077, guid: 8ac9ebc937aad6342b6aebe7fde2cd81, type: 3}
