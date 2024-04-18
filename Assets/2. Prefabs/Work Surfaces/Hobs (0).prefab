@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3786078938510227193}
   - component: {fileID: 7236940249352564456}
   m_Layer: 0
-  m_Name: hob
+  m_Name: Hobs (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,8 +51,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: HobPositions (0)
   _serialNumberUponPurchase: 0
+  _hobData:
+    _serialNumberUponPurchase: 0
+    _maxNumberOfJobs: 0
+    _costOfDishLvl: 0
+    _cookingDurationLvl: 0
+    _numberOfJobsLvl: 0
+    _costOfDish: 0
+    _cookingDuration: 0
+    _currentNumberOfJobs: 0
+    OnCostOfDishLvlChange:
+      m_PersistentCalls:
+        m_Calls: []
+    OnCookingDurationLvlChange:
+      m_PersistentCalls:
+        m_Calls: []
+    OnNumberOfJobsLvlChange:
+      m_PersistentCalls:
+        m_Calls: []
   _demonstrationHob: {fileID: 5194909702935741771}
-  _hob:
+  _hobs:
   - {fileID: 3248896202083464971}
   - {fileID: 8585225339914178615}
   - {fileID: 4270035633949907029}
@@ -70,6 +88,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PW_stove (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146482713887445654, guid: b1f2943c623bcbf48b07dcd293dc3840,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8717402460609169692, guid: b1f2943c623bcbf48b07dcd293dc3840,
         type: 3}
@@ -196,6 +219,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8972745295520141288, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6.4618373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972745295520141288, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.7970474
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972745295520141288, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.2942132
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972745295520141288, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 2.6349883
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972745295520141288, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.6759263
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972745295520141288, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.02889684
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -204,6 +257,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5194909702935741771}
+    - targetCorrespondingSourceObject: {fileID: 1756629706540644, guid: 2c04cf954647e43589c56b0df4058564,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3527502756223730666}
   m_SourcePrefab: {fileID: 100100000, guid: 2c04cf954647e43589c56b0df4058564, type: 3}
 --- !u!1 &300445147680577313 stripped
 GameObject:
@@ -223,6 +280,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25aeb7f6abf21845b6da4a00edbc310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3527502756223730666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300445147680577313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fd943156f0a5249a2a6ce984624d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hobUpgradeView: {fileID: 0}
+  _mainHob: {fileID: 7236940249352564456}
 --- !u!4 &305633925195860799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4658148167064186, guid: 2c04cf954647e43589c56b0df4058564,
@@ -241,6 +312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PW_stove (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146482713887445654, guid: b1f2943c623bcbf48b07dcd293dc3840,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8717402460609169692, guid: b1f2943c623bcbf48b07dcd293dc3840,
         type: 3}
@@ -328,6 +404,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PW_stove (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6146482713887445654, guid: b1f2943c623bcbf48b07dcd293dc3840,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8717402460609169692, guid: b1f2943c623bcbf48b07dcd293dc3840,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -413,6 +494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PW_stove (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146482713887445654, guid: b1f2943c623bcbf48b07dcd293dc3840,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8717402460609169692, guid: b1f2943c623bcbf48b07dcd293dc3840,
         type: 3}

@@ -7,7 +7,6 @@ public class HobData
 {
     [SerializeField] private int _serialNumberUponPurchase;
 
-    [SerializeField] private double _initCookingDuration;
     [SerializeField] private double _maxNumberOfJobs;
 
     [SerializeField] private int _costOfDishLvl;
@@ -43,9 +42,12 @@ public class HobData
         get { return _numberOfJobsLvl; }
         set
         {
-            _numberOfJobsLvl = value;
-            _currentNumberOfJobs = _numberOfJobsLvl;
-            OnNumberOfJobsLvlChange?.Invoke();
+            if (value <= _maxNumberOfJobs)
+            {
+                _numberOfJobsLvl = value;
+                _currentNumberOfJobs = _numberOfJobsLvl;
+                OnNumberOfJobsLvlChange?.Invoke();
+            }
         }
     }
 

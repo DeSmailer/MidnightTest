@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenUpgradeMenuOnClick : MonoBehaviour
+public class OpenUpgradeMenuOnClick : OpenOnClick
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected HobUpgradeView _hobUpgradeView;
+    [SerializeField] protected MainHob _mainHob;
 
-    // Update is called once per frame
-    void Update()
+    public override void Open()
     {
-        
+        _hobUpgradeView.Open();
+        _hobUpgradeView.Initialize(_mainHob);
     }
 }

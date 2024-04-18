@@ -16,6 +16,7 @@ public class MainHob : MonoBehaviour, IPurchased
     public string Name => _name;
     public double Price => HobCostCalculator.GetCost(_serialNumberUponPurchase);
     public bool IsPurchased => _isPurchased;
+    public HobData HobData => _hobData;
 
     private void Start()
     {
