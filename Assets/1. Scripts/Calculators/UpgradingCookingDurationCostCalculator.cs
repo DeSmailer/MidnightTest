@@ -1,7 +1,7 @@
 using System;
 
 //https://docs.google.com/spreadsheets/d/1SDo__HAHj6sR4IdLvgtswTXHGXDqqHFnFjLwR45mGTs/edit?usp=sharing
-public static class UpgradingCookingSpeedCostCalculator
+public static class UpgradingCookingDurationCostCalculator
 {
     private const float NUMBER_OF_DISHES = 1.5f;
 

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 //https://docs.google.com/spreadsheets/d/1SDo__HAHj6sR4IdLvgtswTXHGXDqqHFnFjLwR45mGTs/edit?usp=sharing
-public static class UpgradingNumberOfJobsSpeedCostCalculator
+public static class UpgradingNumberOfJobsCostCalculator
 {
     private const int NUMBER_OF_DISHES = 10;
     private const int coef = 20;

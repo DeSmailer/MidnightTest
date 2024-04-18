@@ -1,17 +1,15 @@
 using UnityEngine;
 
-public class MainHobSurface : MonoBehaviour, IPurchased
+public class MainHob : MonoBehaviour, IPurchased
 {
     ///указано что мы готовим, сколько это стоит, сколько открыто рабочих поверхностей
-
-    //private GameObject _foodPrefab;
-    //private Transform[] _hobSurfacesPositions;
 
     [SerializeField] protected string _name;
     [Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
 
-    [SerializeField] private GameObject _mainHobSurface;
-    [SerializeField] private HobSurface[] _hobSurfaces;
+    [SerializeField] private HobData _hobData;
+    [SerializeField] private DemonstrationHob _demonstrationHob;
+    [SerializeField] private Hob[] _hobs;
 
     [SerializeField] protected bool _isPurchased;
 
@@ -21,18 +19,12 @@ public class MainHobSurface : MonoBehaviour, IPurchased
 
     private void Start()
     {
-        _mainHobSurface.gameObject.SetActive(false);
-        for (int i = 0; i < _hobSurfaces.Length; i++)
+        _demonstrationHob.gameObject.SetActive(false);
+        for (int i = 0; i < _hobs.Length; i++)
         {
-            _hobSurfaces[i].gameObject.SetActive(false);
+            _hobs[i].gameObject.SetActive(false);
         }
     }
-
-    //public void Initialize(Transform myPosition, Transform[] hobSurfacesPositions, GameObject foodPrefab, HobSurface hobSurfacePrefab)
-    //{
-    //    _foodPrefab = foodPrefab;
-    //    _hobSurfacesPositions = hobSurfacesPositions;
-    //}
 
     public bool CanBuy(CurrencyManager currencyManager)
     {
@@ -47,8 +39,10 @@ public class MainHobSurface : MonoBehaviour, IPurchased
     {
         currencyManager.SubtractCurrency(Price);
 
-        _mainHobSurface.gameObject.SetActive(true);
-        _hobSurfaces[0].gameObject.SetActive(true);
+        _demonstrationHob.gameObject.SetActive(true);
+        _hobs[0].gameObject.SetActive(true);
+
+        _hobData.Initialize(_serialNumberUponPurchase, _hobs.Length);
 
         _isPurchased = true;
     }
