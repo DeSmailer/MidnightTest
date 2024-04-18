@@ -2,19 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShoppingListView : MonoBehaviour
+public class ShoppingListView : MonoBehaviour, IPopUp
 {
     [SerializeField] private ShoppingListItemView _shoppingListItemViewPrefab;
     [SerializeField] private Transform _container;
     [SerializeField] private ShoppingList _shoppingList;
     [SerializeField] private CurrencyManager _currencyManager;
 
-    private void OnEnable()
+    private bool _initialized = false;
+
+    public void Open()
     {
-        Display();
+        if (!_initialized)
+        {
+            Initialize();
+            _initialized = true;
+        }
+        gameObject.SetActive(true);
     }
 
-    public void Display()
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Initialize()
     {
         foreach (var purchase in _shoppingList.Purchases)
         {

@@ -7,8 +7,8 @@ public class ShoppingListItemView : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _costText;
     [SerializeField] private Button _buyButton;
-    [SerializeField] private IPurchased _purchased;
-    /* [SerializeField] */
+
+    private IPurchased _purchased;
     private CurrencyManager _currencyManager;
 
     public void Initialize(IPurchased purchased, CurrencyManager currencyManager)
@@ -17,7 +17,6 @@ public class ShoppingListItemView : MonoBehaviour
         _currencyManager = currencyManager;
 
         _nameText.text = purchased.Name;
-        Debug.Log(CurrencyFormatDisplay.Display(_purchased.Price));
         _costText.text = CurrencyFormatDisplay.Display(_purchased.Price);
 
         _buyButton.onClick.AddListener(Buy);
