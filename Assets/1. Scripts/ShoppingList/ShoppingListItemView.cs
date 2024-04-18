@@ -27,6 +27,7 @@ public class ShoppingListItemView : MonoBehaviour
         if (_purchased.CanBuy(_currencyManager))
         {
             _purchased.Buy(_currencyManager);
+            Destroy(gameObject);
         }
     }
 }

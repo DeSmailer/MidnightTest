@@ -18,7 +18,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void SubtractCurrency(double count)
     {
-        _currency += count;
+        _currency -= count;
         OnCurrencyCange?.Invoke();
     }
 }
