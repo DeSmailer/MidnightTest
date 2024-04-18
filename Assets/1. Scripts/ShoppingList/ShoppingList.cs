@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShoppingList : MonoBehaviour
@@ -21,5 +22,7 @@ public class ShoppingList : MonoBehaviour
                 _purchases.Add(purchased);
             }
         }
+
+        _purchases = _purchases.OrderBy(p => p.Price).ToList();
     }
 }

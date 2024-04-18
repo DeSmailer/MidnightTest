@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e38a33946b4f534c85785f350a4ba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: HobPositions (0)
   _serialNumberUponPurchase: 0
   _mainHobSurface: {fileID: 300445147680577313}
   _hobSurfaces:

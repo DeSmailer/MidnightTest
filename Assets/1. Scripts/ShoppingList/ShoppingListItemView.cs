@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ShoppingListItemView : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _costText;
     [SerializeField] private Button _buyButton;
     [SerializeField] private IPurchased _purchased;
@@ -15,7 +16,10 @@ public class ShoppingListItemView : MonoBehaviour
         _purchased = purchased;
         _currencyManager = currencyManager;
 
+        _nameText.text = purchased.Name;
+        Debug.Log(CurrencyFormatDisplay.Display(_purchased.Price));
         _costText.text = CurrencyFormatDisplay.Display(_purchased.Price);
+
         _buyButton.onClick.AddListener(Buy);
     }
 

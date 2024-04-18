@@ -1,21 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MainHobSurface : MonoBehaviour, IPurchased
 {
     ///указано что мы готовим, сколько это стоит, сколько открыто рабочих поверхностей
 
-    [SerializeField] private int _serialNumberUponPurchase;
-
     //private GameObject _foodPrefab;
     //private Transform[] _hobSurfacesPositions;
+
+    [SerializeField] protected string _name;
+    [Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
 
     [SerializeField] private GameObject _mainHobSurface;
     [SerializeField] private HobSurface[] _hobSurfaces;
 
     [SerializeField] protected bool _isPurchased;
 
+    public string Name => _name;
     public double Price => HobSurfacePriceCalculator.GetPurchasePrice(_serialNumberUponPurchase);
     public bool IsPurchased => _isPurchased;
 

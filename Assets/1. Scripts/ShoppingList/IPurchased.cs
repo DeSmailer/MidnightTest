@@ -1,5 +1,6 @@
 public interface IPurchased
 {
+    public string Name { get; }
     public double Price { get; }
     public bool IsPurchased { get; }
 
