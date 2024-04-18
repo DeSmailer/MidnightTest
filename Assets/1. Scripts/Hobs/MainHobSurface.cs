@@ -16,7 +16,7 @@ public class MainHobSurface : MonoBehaviour, IPurchased
     [SerializeField] protected bool _isPurchased;
 
     public string Name => _name;
-    public double Price => HobSurfacePriceCalculator.GetPurchasePrice(_serialNumberUponPurchase);
+    public double Price => HobCostCalculator.GetCost(_serialNumberUponPurchase);
     public bool IsPurchased => _isPurchased;
 
     private void Start()

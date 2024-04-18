@@ -20,3 +20,5 @@ public abstract class OpenOnClick : MonoBehaviour
         Open();
     }
 }
+
+
