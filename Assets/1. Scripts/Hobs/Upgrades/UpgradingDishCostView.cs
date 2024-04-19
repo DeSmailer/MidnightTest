@@ -4,20 +4,27 @@ using UnityEngine.UI;
 
 public class UpgradingDishCostView : MonoBehaviour
 {
+    [Header("Data")]
+    [SerializeField] private CurrencyManager _currencyManager;
+    [SerializeField] private HobData _hobData;
+
     [Header("CurrentDishCost")]
     [SerializeField] private TMP_Text _currentDishCostText;
+
+    [Header("Slider")]
+    [SerializeField] private Slider _slider;
+    [SerializeField] private TMP_Text _minLvlText;
+    [SerializeField] private TMP_Text _maxLvlText;
 
     [Header("BuyButton")]
     [SerializeField] private TMP_Text _costText;
     [SerializeField] private Button _buyButton;
     [SerializeField] private Image _buttonImage;
 
+    [Header("MaxLvlReached")]
     [SerializeField] private GameObject _maxLvlReached;
 
-    [SerializeField] private CurrencyManager _currencyManager;
-    [SerializeField] private HobData _hobData;
-
-    [Header("Colors")]
+    [Header("BuyButtonColors")]
     [SerializeField] private Color _activeButtonColor;
     [SerializeField] private Color _inactiveButtonColor;
 
@@ -29,8 +36,18 @@ public class UpgradingDishCostView : MonoBehaviour
         _buyButton.gameObject.SetActive(true);
         _maxLvlReached.gameObject.SetActive(false);
 
+        InitializeSlider();
+
         Display();
         Subscribe();
+    }
+
+    private void InitializeSlider()
+    {
+        _slider.maxValue = _hobData.MaxCostOfDishLvl;
+        _slider.minValue = 1;
+        _maxLvlText.text = _hobData.MaxCostOfDishLvl.ToString();
+        _minLvlText.text = "1";
     }
 
     public void TryUpgrade()
@@ -47,6 +64,8 @@ public class UpgradingDishCostView : MonoBehaviour
     public void Display()
     {
         _currentDishCostText.text = CurrencyFormatDisplay.Display(_hobData.CostOfDish);
+        _slider.value = _hobData.CostOfDishLvl;
+
         if (_hobData.CostOfDishLvl < _hobData.MaxCostOfDishLvl)
         {
             DisplayBuyButton();
