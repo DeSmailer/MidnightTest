@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MainHob : MonoBehaviour, IPurchased
@@ -14,12 +15,15 @@ public class MainHob : MonoBehaviour, IPurchased
     [SerializeField] private DemonstrationHob _demonstrationHob;
     [SerializeField] private Hob[] _hobs;
 
+    [SerializeField] private List<Hob> _activeHobs;
+
     [SerializeField] protected bool _isPurchased;
 
     public string Name => _name;
     public double Price => HobCostCalculator.GetCost(_serialNumberUponPurchase);
     public bool IsPurchased => _isPurchased;
     public HobData HobData => _hobData;
+    public List<Hob> ActiveHobs => _activeHobs;
 
     private void Start()
     {
@@ -44,10 +48,23 @@ public class MainHob : MonoBehaviour, IPurchased
         currencyManager.SubtractCurrency(Price);
 
         _demonstrationHob.gameObject.SetActive(true);
-        _hobs[0].gameObject.SetActive(true);
 
         _hobData.Initialize(_serialNumberUponPurchase, _maxCostOfDishLvl, _maxCookingDurationLvl, _hobs.Length);
 
         _isPurchased = true;
+
+        ActivateHobs();
+        _hobData.OnNumberOfJobsLvlChange.AddListener(ActivateHobs);
+    }
+
+    private void ActivateHobs()
+    {
+        _activeHobs = new List<Hob>();
+
+        for (int i = 0; i < HobData.CurrentNumberOfJobs; i++)
+        {
+            _hobs[i].gameObject.SetActive(true);
+            _activeHobs.Add(_hobs[i]);
+        }
     }
 }
