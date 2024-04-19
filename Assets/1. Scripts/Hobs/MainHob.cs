@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class MainHob : MonoBehaviour, IPurchased
 {
-    ///указано что мы готовим, сколько это стоит, сколько открыто рабочих поверхностей
+    //[SerializeField] private const int LEVELS_PER_HOB = 25;
 
-    [SerializeField] protected string _name;
+    [SerializeField] private string _name;
     [Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
+
+    [SerializeField] private int _maxCostOfDishLvl;
+    [SerializeField] private int _maxCookingDurationLvl;
 
     [SerializeField] private HobData _hobData;
     [SerializeField] private DemonstrationHob _demonstrationHob;
@@ -43,7 +46,7 @@ public class MainHob : MonoBehaviour, IPurchased
         _demonstrationHob.gameObject.SetActive(true);
         _hobs[0].gameObject.SetActive(true);
 
-        _hobData.Initialize(_serialNumberUponPurchase, _hobs.Length);
+        _hobData.Initialize(_serialNumberUponPurchase, _maxCostOfDishLvl, _maxCookingDurationLvl, _hobs.Length);
 
         _isPurchased = true;
     }

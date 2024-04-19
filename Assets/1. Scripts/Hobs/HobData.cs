@@ -7,7 +7,9 @@ public class HobData
 {
     [SerializeField] private int _serialNumberUponPurchase;
 
-    [SerializeField] private double _maxNumberOfJobs;
+    [SerializeField] private int _maxNumberOfJobsLvl;
+    [SerializeField] private int _maxCostOfDishLvl;
+    [SerializeField] private int _maxCookingDurationLvl;
 
     [SerializeField] private int _costOfDishLvl;
     [SerializeField] private int _cookingDurationLvl;
@@ -22,9 +24,12 @@ public class HobData
         get { return _costOfDishLvl; }
         set
         {
-            _costOfDishLvl = value;
-            _costOfDish = DishCostCalculator.GetCost(_serialNumberUponPurchase, _costOfDishLvl);
-            OnCostOfDishLvlChange?.Invoke();
+            if (value <= _maxCostOfDishLvl)
+            {
+                _costOfDishLvl = value;
+                _costOfDish = DishCostCalculator.GetCost(_serialNumberUponPurchase, _costOfDishLvl);
+                OnCostOfDishLvlChange?.Invoke();
+            }
         }
     }
     public int CookingDurationLvl
@@ -32,9 +37,12 @@ public class HobData
         get { return _cookingDurationLvl; }
         set
         {
-            _cookingDurationLvl = value;
-            _cookingDuration = CookingDurationCalculator.GetDuration(_serialNumberUponPurchase, _cookingDurationLvl);
-            OnCookingDurationLvlChange?.Invoke();
+            if (value <= MaxCookingDurationLvl)
+            {
+                _cookingDurationLvl = value;
+                _cookingDuration = CookingDurationCalculator.GetDuration(_serialNumberUponPurchase, _cookingDurationLvl);
+                OnCookingDurationLvlChange?.Invoke();
+            }
         }
     }
     public int NumberOfJobsLvl
@@ -42,7 +50,7 @@ public class HobData
         get { return _numberOfJobsLvl; }
         set
         {
-            if (value <= _maxNumberOfJobs)
+            if (value <= MaxNumberOfJobsLvl)
             {
                 _numberOfJobsLvl = value;
                 _currentNumberOfJobs = _numberOfJobsLvl;
@@ -55,6 +63,10 @@ public class HobData
     public double CookingDuration => _cookingDuration;
     public int CurrentNumberOfJobs => _currentNumberOfJobs;
 
+    public int MaxCostOfDishLvl => _maxCostOfDishLvl;
+    public int MaxCookingDurationLvl => _maxCookingDurationLvl;
+    public int MaxNumberOfJobsLvl => _maxNumberOfJobsLvl;
+
     public double UpgradingCostDishCost =>
         UpgradingCostDishCostCalculator.GetCost(_serialNumberUponPurchase, CostOfDishLvl);
     public double UpgradingCookingDurationCost =>
@@ -66,10 +78,13 @@ public class HobData
     public UnityEvent OnCookingDurationLvlChange;
     public UnityEvent OnNumberOfJobsLvlChange;
 
-    public void Initialize(int serialNumberUponPurchase, int maxNumberOfJobs)
+    public void Initialize(int serialNumberUponPurchase, int maxCostOfDishLvl, int maxCookingDurationLvl, int maxNumberOfJobs)
     {
         _serialNumberUponPurchase = serialNumberUponPurchase;
-        _maxNumberOfJobs = maxNumberOfJobs;
+
+        _maxCostOfDishLvl = maxCostOfDishLvl;
+        _maxCookingDurationLvl = maxCookingDurationLvl;
+        _maxNumberOfJobsLvl = maxNumberOfJobs;
 
         CostOfDishLvl = 1;
         CookingDurationLvl = 1;
