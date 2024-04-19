@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HobUpgradeView : MonoBehaviour, IPopUp
 {
     [SerializeField] private CurrencyManager _currencyManager;
-    [SerializeField] private MainHob _mainHob;
+    private MainHob _mainHob;
 
     [SerializeField] private UpgradingDishCostView _upgradingDishCostView;
+    [SerializeField] private UpgradingCookingDurationView _upgradingCookingDurationView;
+    [SerializeField] private UpgradingNumberOfJobsView _upgradingNumberOfJobsView;
 
     public void Open()
     {
@@ -24,6 +24,8 @@ public class HobUpgradeView : MonoBehaviour, IPopUp
     {
         _mainHob = mainHob;
         _upgradingDishCostView.Initialize(_mainHob.HobData, _currencyManager);
+        _upgradingCookingDurationView.Initialize(_mainHob.HobData, _currencyManager);
+        _upgradingNumberOfJobsView.Initialize(_mainHob.HobData, _currencyManager);
     }
 
 }

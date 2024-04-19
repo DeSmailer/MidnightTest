@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +16,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void SubtractCurrency(double count)
     {
+        Debug.Log("+");
         _currency -= count;
         OnCurrencyCange?.Invoke();
     }

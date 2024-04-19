@@ -24,7 +24,8 @@ public static class UpgradingNumberOfJobsCostCalculator
                 lvl = 50;
                 break;
             default:
-                Debug.LogError(currentNumberOfJobs + " - max 3");
+                lvl = 100;
+                //Debug.LogError(currentNumberOfJobs + " - max 3");
                 break;
         }
 

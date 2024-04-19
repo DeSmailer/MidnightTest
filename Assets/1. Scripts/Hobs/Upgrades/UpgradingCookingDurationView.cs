@@ -1,33 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-
-public class UpgradingCookingDurationView : MonoBehaviour
+public class UpgradingCookingDurationView : UpgradingCookingView
 {
-    //[SerializeField] private TMP_Text _nameText;
-    //[SerializeField] private TMP_Text _costText;
-    //[SerializeField] private Button _buyButton;
+    protected override void InitializeSlider()
+    {
+        _slider.maxValue = _hobData.MaxCookingDurationLvl;
+        _slider.minValue = 1;
+        _maxLvlText.text = _hobData.MaxCookingDurationLvl.ToString();
+        _minLvlText.text = "1";
+    }
 
-    //private CurrencyManager _currencyManager;
+    public override void TryUpgrade()
+    {
+        if (_hobData.UpgradingCookingDurationCost <= _currencyManager.Currency)
+        {
+            _currencyManager.SubtractCurrency(_hobData.UpgradingCookingDurationCost);
+            _hobData.CookingDurationLvl++;
 
-    //public void Initialize(CurrencyManager currencyManager)
-    //{
-    //    _currencyManager = currencyManager;
+            Display();
+        }
+    }
 
-    //    _nameText.text = purchased.Name;
-    //    _costText.text = CurrencyFormatDisplay.Display(_purchased.Price);
+    public override void Display()
+    {
+        _currentValueText.text = _hobData.CookingDuration.ToString() + " s";
+        _slider.value = _hobData.CookingDurationLvl;
 
-    //    _buyButton.onClick.AddListener(Buy);
-    //}
+        if (_hobData.CookingDurationLvl < _hobData.MaxCookingDurationLvl)
+        {
+            DisplayBuyButton();
+        }
+        else
+        {
+            DisplayMaxLvlReached();
+        }
+    }
 
-    //public void Buy()
-    //{
-    //    if (CanBuy(_currencyManager))
-    //    {
-    //        _purchased.Buy(_currencyManager);
-    //        Destroy(gameObject);
-    //    }
-    //}
+    public override void DisplayBuyButton()
+    {
+        _costText.text = CurrencyFormatDisplay.Display(_hobData.UpgradingCookingDurationCost);
+        SelectButtonColor();
+    }
+
+    protected override void SelectButtonColor()
+    {
+        if (_hobData.UpgradingCookingDurationCost <= _currencyManager.Currency)
+        {
+            _buttonImage.color = _activeButtonColor;
+        }
+        else
+        {
+            _buttonImage.color = _inactiveButtonColor;
+        }
+    }
 }

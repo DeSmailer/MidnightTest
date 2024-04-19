@@ -71,7 +71,7 @@ public class HobData
         UpgradingCostDishCostCalculator.GetCost(_serialNumberUponPurchase, CostOfDishLvl);
     public double UpgradingCookingDurationCost =>
         UpgradingCookingDurationCostCalculator.GetCost(_serialNumberUponPurchase, _cookingDurationLvl);
-    public double UpgradingNumberOfJobs =>
+    public double UpgradingNumberOfJobsCost =>
         UpgradingNumberOfJobsCostCalculator.GetCost(_serialNumberUponPurchase, CurrentNumberOfJobs);
 
     public UnityEvent OnCostOfDishLvlChange;

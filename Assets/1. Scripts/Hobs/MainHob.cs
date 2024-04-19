@@ -7,8 +7,8 @@ public class MainHob : MonoBehaviour, IPurchased
     [SerializeField] private string _name;
     [Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
 
-    [SerializeField] private int _maxCostOfDishLvl;
-    [SerializeField] private int _maxCookingDurationLvl;
+    [SerializeField] private int _maxCostOfDishLvl = 1;
+    [SerializeField] private int _maxCookingDurationLvl = 1;
 
     [SerializeField] private HobData _hobData;
     [SerializeField] private DemonstrationHob _demonstrationHob;

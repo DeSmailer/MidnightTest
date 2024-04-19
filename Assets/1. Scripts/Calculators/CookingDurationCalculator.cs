@@ -4,7 +4,7 @@ using System;
 public static class CookingDurationCalculator
 {
     private const double SECONDS_PER_LEVEL = 5;
-    private const double PERCENTAGE_REDUCTION_PER_LEVEL = 0.09;
+    private const double PERCENTAGE_REDUCTION_PER_LEVEL = 0.009;
 
     private static double GetInitialDuration(int serialNumberUponPurchase)
     {
@@ -13,8 +13,8 @@ public static class CookingDurationCalculator
 
     public static double GetDuration(int serialNumberUponPurchase, int currentLvl)
     {
-        double res = GetInitialDuration(serialNumberUponPurchase)
-            - PERCENTAGE_REDUCTION_PER_LEVEL * (currentLvl - 1);
+        double initialDuration = GetInitialDuration(serialNumberUponPurchase);
+        double res = initialDuration - initialDuration * PERCENTAGE_REDUCTION_PER_LEVEL * (currentLvl - 1);
         return res;
     }
 }
