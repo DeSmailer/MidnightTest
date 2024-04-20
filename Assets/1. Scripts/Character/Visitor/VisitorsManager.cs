@@ -7,6 +7,8 @@ public class VisitorsManager : MonoBehaviour
     [SerializeField] private Visitor _visitorPrefab;
     [SerializeField] private Transform _visitorSpawnPosition;
     [SerializeField] private List<Table> _tables;
+
+    [SerializeField] private List<Table> _availableTables = new List<Table>();
     private int _numberOfVisitors;
 
     public void Initialize(List<Table> tables)
@@ -21,6 +23,7 @@ public class VisitorsManager : MonoBehaviour
     private void TablePurchaseHandler(Table table)
     {
         _numberOfVisitors += table.VisitorPositions.Count;
+        _availableTables.Add(table);
 
         SpawnVisitor();
     }
@@ -28,6 +31,7 @@ public class VisitorsManager : MonoBehaviour
     public void SpawnVisitor()
     {
         Visitor visitor = Instantiate(_visitorPrefab, _visitorSpawnPosition.position, _visitorSpawnPosition.rotation);
+        visitor.GO(_availableTables[0].VisitorPositions[0].position);
     }
 
     private void OnDestroy()

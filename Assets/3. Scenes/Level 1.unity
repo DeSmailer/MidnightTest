@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &37642646 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 261930996244901232, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2257347060821770535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &68971324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1182,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17cf9eb65deced241940a3e219a6169f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &536714673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 536714674}
+  m_Layer: 0
+  m_Name: VisitorSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &536714674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536714673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.13, y: 0, z: 33.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 37642646}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541419027
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,7 +4378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visitorPrefab: {fileID: -3738956329092939771, guid: 70e53a4ae2645e24ab993296c0fff58c,
     type: 3}
-  _visitorSpawnPosition: {fileID: 0}
+  _visitorSpawnPosition: {fileID: 536714674}
   _tables: []
 --- !u!1001 &1646570747
 PrefabInstance:
@@ -4699,6 +4736,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755308468}
   m_CullTransparentMesh: 1
+--- !u!1 &1770262212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1770262213}
+  - component: {fileID: 1770262214}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1770262213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770262212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 37642646}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770262214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770262212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 14.037998, y: 10, z: 15.182341}
+  m_Center: {x: 0.97148895, y: 2, z: 0.6170168}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 55
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 49cfe9195c5fc494682be1cdf1ab7483, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1772296724
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,6 +6535,11 @@ PrefabInstance:
       propertyPath: _listOfDishes
       value: 
       objectReference: {fileID: 1631305598}
+    - target: {fileID: 2714857405248846001, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _visitorsManager
+      value: 
+      objectReference: {fileID: 1631305599}
     - target: {fileID: 5050898236543765806, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _hobUpgradeView
@@ -6462,7 +6567,15 @@ PrefabInstance:
       objectReference: {fileID: 1088075929}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 261930996244901232, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 536714674}
+    - targetCorrespondingSourceObject: {fileID: 261930996244901232, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1770262213}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78e0d7c948c4bba41b0fd797e11516cb, type: 3}
 --- !u!114 &2526485834879177625
