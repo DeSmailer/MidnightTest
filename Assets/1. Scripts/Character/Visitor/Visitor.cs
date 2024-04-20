@@ -41,22 +41,7 @@ public class Visitor : MonoBehaviour
         switch (_currentState)
         {
             case VisitorState.MoveToTable:
-                if (Vector3.Distance(_tablePosition.position, transform.position) <= _stopDistance)
-                {
-                    _navMeshAgent.isStopped = true;
-
-                    transform.position = Vector3.MoveTowards(transform.position, _tablePosition.position, _speed * Time.deltaTime);
-
-                    Quaternion targetRotation = _tablePosition.rotation;
-                    if (targetRotation != transform.rotation)
-                    {
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _angularSpeed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        _currentState = VisitorState.Stand;
-                    }
-                }
+                RotateToTable();
                 break;
             case VisitorState.Stand:
                 break;
@@ -64,6 +49,27 @@ public class Visitor : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void RotateToTable()
+    {
+        if (Vector3.Distance(_tablePosition.position, transform.position) <= _stopDistance)
+        {
+            _navMeshAgent.isStopped = true;
+
+            transform.position = Vector3.MoveTowards(transform.position, _tablePosition.position, _speed * Time.deltaTime);
+
+            Quaternion targetRotation = _tablePosition.rotation;
+            if (targetRotation != transform.rotation)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _angularSpeed * Time.deltaTime);
+            }
+            else
+            {
+                _currentState = VisitorState.Stand;
+                _characterPosition.State = CharacterPositionState.Waiting;
+            }
         }
     }
 }

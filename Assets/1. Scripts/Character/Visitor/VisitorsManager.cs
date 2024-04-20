@@ -35,7 +35,7 @@ public class VisitorsManager : MonoBehaviour
         {
             foreach (CharacterPosition characterPosition in table.VisitorPositions)
             {
-                if (characterPosition.state == CharacterPositionState.Free)
+                if (characterPosition.State == CharacterPositionState.Free)
                 {
                     visitor.Initialize(characterPosition, transform);
                     break;
