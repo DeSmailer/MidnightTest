@@ -7,12 +7,15 @@ public class Level : MonoBehaviour
     [SerializeField] private List<MainHob> _mainHobs;
     [SerializeField] private List<Table> _tables;
     [SerializeField] private ListOfDishesAtLevel _listOfDishes;
+    [SerializeField] private VisitorsManager _visitorsManager;
 
     private void Start()
     {
         _listOfDishes.Initialize();
+
         InitializeMainHobs();
         InitializeTables();
+        _visitorsManager.Initialize(_tables);
 
         StartCoroutine(Test());
     }
