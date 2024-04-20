@@ -5,13 +5,13 @@ public class MainHob : MonoBehaviour, IPurchased
 {
     //[SerializeField] private const int LEVELS_PER_HOB = 25;
 
-    [SerializeField] private string _name;
     [Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
 
     [SerializeField] private int _maxCostOfDishLvl = 1;
     [SerializeField] private int _maxCookingDurationLvl = 1;
 
     [SerializeField] private HobData _hobData;
+    [SerializeField] private DishOnLevel _dishOnLevel;
     [SerializeField] private DemonstrationHob _demonstrationHob;
     [SerializeField] private Hob[] _hobs;
 
@@ -19,14 +19,17 @@ public class MainHob : MonoBehaviour, IPurchased
 
     [SerializeField] protected bool _isPurchased;
 
-    public string Name => _name;
+    public string Name => _dishOnLevel.Name;
     public double Price => HobCostCalculator.GetCost(_serialNumberUponPurchase);
     public bool IsPurchased => _isPurchased;
     public HobData HobData => _hobData;
     public List<Hob> ActiveHobs => _activeHobs;
 
-    private void Start()
+    public void Initialize(DishOnLevel dishOnLevel)
     {
+        _dishOnLevel = dishOnLevel;
+        _demonstrationHob.Initialize(_dishOnLevel.DishModelPrefab);
+
         _demonstrationHob.gameObject.SetActive(false);
         for (int i = 0; i < _hobs.Length; i++)
         {

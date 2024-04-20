@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DemonstrationHob : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Transform _dishPosition;
 
-    // Update is called once per frame
-    void Update()
+    public void Initialize(GameObject dishModel)
     {
-        
+        Instantiate(dishModel, _dishPosition.position, _dishPosition.rotation, _dishPosition);
     }
 }
