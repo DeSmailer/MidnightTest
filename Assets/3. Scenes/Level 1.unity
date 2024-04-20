@@ -4295,6 +4295,7 @@ GameObject:
   - component: {fileID: 1631305597}
   - component: {fileID: 1631305598}
   - component: {fileID: 1631305599}
+  - component: {fileID: 1631305600}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -4381,6 +4382,18 @@ MonoBehaviour:
   _visitorSpawnPosition: {fileID: 536714674}
   _tables: []
   _availableTables: []
+--- !u!114 &1631305600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631305594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4400011c02fe6443807a2cb064057c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1646570747
 PrefabInstance:
   m_ObjectHideFlags: 0
