@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Visitor : MonoBehaviour
+public class Visitor : Character
 {
-    [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private CharacterPosition _characterPosition;
     [SerializeField] private Transform _tablePosition;
     [SerializeField] private Transform _leavePosition;
-
-    [SerializeField] private float _speed = 3.5f;
-    [SerializeField] private float _angularSpeed = 120f;
-    [SerializeField] private float _stopDistance;
 
     [SerializeField] private VisitorState _currentState;
 
@@ -20,20 +15,16 @@ public class Visitor : MonoBehaviour
 
     public void Initialize(CharacterPosition characterPosition, Transform leavePosition)
     {
+        base.Initialize();
+
         _characterPosition = characterPosition;
         _tablePosition = characterPosition.position;
+        _characterPosition.State = CharacterPositionState.Taken;
 
         _leavePosition = leavePosition;
 
-        _navMeshAgent.speed = _speed;
-
         GoTo(_tablePosition);
         _currentState = VisitorState.MoveToTable;
-    }
-
-    private void GoTo(Transform position)
-    {
-        _navMeshAgent.SetDestination(position.position);
     }
 
     private void Update()
@@ -43,7 +34,7 @@ public class Visitor : MonoBehaviour
             case VisitorState.MoveToTable:
                 RotateToTable();
                 break;
-            case VisitorState.Stand:
+            case VisitorState.Idle:
                 break;
             case VisitorState.Leave:
                 break;
@@ -67,7 +58,7 @@ public class Visitor : MonoBehaviour
             }
             else
             {
-                _currentState = VisitorState.Stand;
+                _currentState = VisitorState.Idle;
                 _characterPosition.State = CharacterPositionState.Waiting;
             }
         }
@@ -77,6 +68,6 @@ public class Visitor : MonoBehaviour
 public enum VisitorState
 {
     MoveToTable,
-    Stand,
+    Idle,
     Leave,
 }

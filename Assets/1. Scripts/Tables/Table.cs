@@ -45,15 +45,4 @@ public class Table : MonoBehaviour, IPurchased
         _isPurchased = true;
         OnPurchase?.Invoke(this);
     }
-
-    //private void ActivateHobs()
-    //{
-    //    _activeHobs = new List<Hob>();
-
-    //    for (int i = 0; i < HobData.CurrentNumberOfJobs; i++)
-    //    {
-    //        _hobs[i].gameObject.SetActive(true);
-    //        _activeHobs.Add(_hobs[i]);
-    //    }
-    //}
 }
