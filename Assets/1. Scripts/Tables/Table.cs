@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IPurchased
 {
-    [SerializeField] private List<CharacterPosition> _waiterPositions;
+    [SerializeField] private CharacterPosition _waiterPositions;
     [SerializeField] private List<CharacterPosition> _visitorPositions;
 
     [SerializeField] private string _name = "Стол";
@@ -15,6 +16,11 @@ public class Table : MonoBehaviour, IPurchased
     public string Name => _name;
     public double Price => TableCostCalculator.GetCost(_number);
     public bool IsPurchased => _isPurchased;
+
+    public Action<Table> OnPurchase;
+
+    public CharacterPosition WaiterPositions => _waiterPositions;
+    public List<CharacterPosition> VisitorPositions => _visitorPositions;
 
     public void Initialize()
     {
@@ -37,6 +43,7 @@ public class Table : MonoBehaviour, IPurchased
         gameObject.SetActive(true);
 
         _isPurchased = true;
+        OnPurchase?.Invoke(this);
     }
 
     //private void ActivateHobs()
