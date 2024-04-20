@@ -31,7 +31,18 @@ public class VisitorsManager : MonoBehaviour
     public void SpawnVisitor()
     {
         Visitor visitor = Instantiate(_visitorPrefab, _visitorSpawnPosition.position, _visitorSpawnPosition.rotation);
-        visitor.GO(_availableTables[0].VisitorPositions[0].position);
+        foreach (Table table in _availableTables)
+        {
+            foreach (CharacterPosition characterPosition in table.VisitorPositions)
+            {
+                if (characterPosition.state == CharacterPositionState.Free)
+                {
+                    visitor.Initialize(characterPosition, transform);
+                    break;
+                }
+                Debug.Log("break");
+            }
+        }
     }
 
     private void OnDestroy()
