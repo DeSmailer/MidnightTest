@@ -24,6 +24,7 @@ public class MainHob : MonoBehaviour, IPurchased
     public bool IsPurchased => _isPurchased;
     public HobData HobData => _hobData;
     public List<Hob> ActiveHobs => _activeHobs;
+    public DishOnLevel DishOnLevel => _dishOnLevel;
 
     public void Initialize(DishOnLevel dishOnLevel)
     {
@@ -54,6 +55,7 @@ public class MainHob : MonoBehaviour, IPurchased
 
         _hobData.Initialize(_serialNumberUponPurchase, _maxCostOfDishLvl, _maxCookingDurationLvl, _hobs.Length);
 
+        DishOnLevel.IsPurchased = true;
         _isPurchased = true;
 
         ActivateHobs();

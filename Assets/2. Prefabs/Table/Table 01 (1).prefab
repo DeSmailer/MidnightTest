@@ -104,8 +104,9 @@ GameObject:
   - component: {fileID: 4973205138805755738}
   - component: {fileID: 3246191905550127589}
   - component: {fileID: 3210546093824883901}
+  - component: {fileID: 1594641357368371329}
   m_Layer: 0
-  m_Name: Dinner Table
+  m_Name: Table 01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,3 +181,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1594641357368371329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266157800292467942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6274fd72f20464f858f39b8ec8c5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waiterPositions:
+  - position: {fileID: 242035838446257347}
+    state: 0
+  _visitorPositions:
+  - position: {fileID: 2144390157573756588}
+    state: 0
+  - position: {fileID: 3204581079095312504}
+    state: 0
+  _name: "\u0421\u0442\u043E\u043B"
+  _number: 1
+  _isPurchased: 0

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class DishOnLevel
@@ -12,7 +11,21 @@ public class DishOnLevel
     public string Name => _name;
     public GameObject DishModelPrefab => _dishModelPrefab;
     public Sprite DishImage => _dishImage;
-    public bool IsPurchased => _isPurchased;
+    public bool IsPurchased
+    {
+        get { return _isPurchased; }
+        set
+        {
+            if (_isPurchased == false && value == true)
+            {
+                _isPurchased = value;
+                OnPurchased?.Invoke(this);
+            }
+        }
+    }
+
+    public Action<DishOnLevel> OnPurchased;
+
 
     public DishOnLevel(string name, GameObject dishModelPrefab, Sprite dishImage)
     {

@@ -4,18 +4,44 @@ using UnityEngine;
 public class ListOfDishesAtLevel : MonoBehaviour
 {
     [SerializeField] private List<DishOnLevelSO> _dishsOnLevelSO;
-    private List<DishOnLevel> _dishsOnLevel;
+    [SerializeField] private List<DishOnLevel> _dishsOnLevel = new List<DishOnLevel>();
+    private List<DishOnLevel> _availableDishsOnLevel = new List<DishOnLevel>();
 
     //[SerializeField] private List<MainHob> _mainHobs;
 
     public List<DishOnLevel> DishsOnLevel => _dishsOnLevel;
+    public List<DishOnLevel> AvailableDishsOnLevel => _availableDishsOnLevel;
 
     public void Initialize()
     {
-        _dishsOnLevel = new List<DishOnLevel>();
         foreach (DishOnLevelSO item in _dishsOnLevelSO)
         {
-            _dishsOnLevel.Add(item.GetDishOnLevel());
+            DishOnLevel dishOnLevel = item.GetDishOnLevel();
+            _dishsOnLevel.Add(dishOnLevel);
+            dishOnLevel.OnPurchased += AddAvailableDish;
+        }
+    }
+
+    private void AddAvailableDish(DishOnLevel dishOnLevel)
+    {
+        _availableDishsOnLevel.Add(dishOnLevel);
+    }
+
+    public DishOnLevel GetRandomAvailableDish()
+    {
+        if (AvailableDishsOnLevel.Count > 0)
+        {
+            int randomIndex = Random.Range(0, AvailableDishsOnLevel.Count);
+            return AvailableDishsOnLevel[randomIndex];
+        }
+        return null;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (DishOnLevel dishOnLevel in _dishsOnLevel)
+        {
+            dishOnLevel.OnPurchased -= AddAvailableDish;
         }
     }
 }
