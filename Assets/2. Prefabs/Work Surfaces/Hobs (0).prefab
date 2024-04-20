@@ -50,10 +50,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: HobPositions (0)
-  _serialNumberUponPurchase: 0
+  _serialNumberUponPurchase: 1
+  _maxCostOfDishLvl: 100
+  _maxCookingDurationLvl: 100
   _hobData:
     _serialNumberUponPurchase: 0
-    _maxNumberOfJobs: 0
+    _maxNumberOfJobsLvl: 0
+    _maxCostOfDishLvl: 0
+    _maxCookingDurationLvl: 0
     _costOfDishLvl: 0
     _cookingDurationLvl: 0
     _numberOfJobsLvl: 0
@@ -75,6 +79,7 @@ MonoBehaviour:
   - {fileID: 8585225339914178615}
   - {fileID: 4270035633949907029}
   - {fileID: 355365730768745471}
+  _activeHobs: []
   _isPurchased: 0
 --- !u!1001 &64325344564871200
 PrefabInstance:
