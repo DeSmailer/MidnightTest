@@ -33,9 +33,18 @@ public class DishCountInOrder
 {
     public DishOnLevel dish;
     public int count;
+
+    public Action OnDishReceived;
+
     public DishCountInOrder(DishOnLevel dish, int count)
     {
         this.dish = dish;
         this.count = count;
+    }
+
+    public void DishReceived()
+    {
+        count--;
+        OnDishReceived?.Invoke();
     }
 }

@@ -7,17 +7,21 @@ public class Waiter : Character
     private Table _table;
 
     [SerializeField] private WaiterState _currentState;
-    [SerializeField] private TablesWaitingForWaiter _tablesWaitingForWaiter;
-    [SerializeField] private ListOfDishesAtLevel _listOfDishesAtLevel;
-    [SerializeField] private OrderManager _orderManager;
+    private TablesWaitingForWaiter _tablesWaitingForWaiter;
+    private ListOfDishesAtLevel _listOfDishesAtLevel;
+    private OrderManager _orderManager;
+
+    [SerializeField] private ProgressBar _progressBar;
 
     private bool _isBusy = false;
-    [SerializeField] private float _orderCreationTime = 1f;
+    [SerializeField] private float _orderCreationTime = 3f;
 
     public void Initialize(TablesWaitingForWaiter tablesWaitingForWaiter,
         ListOfDishesAtLevel listOfDishesAtLevel, OrderManager orderManager)
     {
         base.Initialize();
+
+        _progressBar.Toggle(false);
 
         _tablesWaitingForWaiter = tablesWaitingForWaiter;
         _listOfDishesAtLevel = listOfDishesAtLevel;
@@ -116,13 +120,17 @@ public class Waiter : Character
 
     private IEnumerator TakesOrder(float orderCreationTime, Visitor visitor)
     {
+        _progressBar.Toggle(true);
         Debug.Log("TakesOrder I");
         float duration = orderCreationTime;
         while (duration > 0)
         {
             yield return null;
             duration -= Time.deltaTime;
+            _progressBar.UpdateProcessUI(duration, orderCreationTime);
         }
+        _progressBar.Toggle(false);
+
         DishCountInOrder dishCountInOrder = _listOfDishesAtLevel.GetRandomDishCountInOrder();
         Order order = new Order(dishCountInOrder, visitor.Table, visitor);
         visitor.Order = order;

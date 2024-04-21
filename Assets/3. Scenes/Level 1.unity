@@ -6374,6 +6374,11 @@ PrefabInstance:
       objectReference: {fileID: 1631305598}
     - target: {fileID: 2714857405248846001, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
+      propertyPath: _orderManager
+      value: 
+      objectReference: {fileID: 1631305601}
+    - target: {fileID: 2714857405248846001, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
       propertyPath: _visitorsManager
       value: 
       objectReference: {fileID: 1631305599}

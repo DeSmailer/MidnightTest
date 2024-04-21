@@ -8,6 +8,7 @@ public class Visitor : Character
     [SerializeField] private Transform _leavePosition;
 
     [SerializeField] private Order _order;
+    [SerializeField] private OrderView _orderView ;
 
     [SerializeField] private VisitorState _currentState;
 
