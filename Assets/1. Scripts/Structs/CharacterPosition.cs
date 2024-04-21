@@ -16,7 +16,6 @@ public class TableCharacterPosition
         set
         {
             _state = value;
-            Debug.Log(_state.ToString());
             OnStateCange?.Invoke(this, _state);
         }
     }

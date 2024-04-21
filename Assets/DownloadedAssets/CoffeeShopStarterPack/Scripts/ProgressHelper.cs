@@ -15,21 +15,21 @@ namespace PW
 {
     public class ProgressHelper : MonoBehaviour
     {
-        public Image m_Image;
+	    public Image m_Image;
 
+        
+        public void UpdateProcessUI(float curAmount,float totalProcess)
+	    {
+		    if (m_Image != null)
+				m_Image.fillAmount = curAmount / totalProcess;
 
-        public void UpdateProcessUI(float curAmount, float totalProcess)
-        {
-            if (m_Image != null)
-                m_Image.fillAmount = (1 / curAmount) / totalProcess;
-
-        }
+	    }
 
         public void ToggleHelper(bool result)
         {
             gameObject.SetActive(result);
 
-            m_Image.fillAmount = 0;
+			m_Image.fillAmount = 0;
         }
 
 

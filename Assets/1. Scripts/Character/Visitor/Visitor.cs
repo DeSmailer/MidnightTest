@@ -8,11 +8,21 @@ public class Visitor : Character
     [SerializeField] private Transform _leavePosition;
 
     [SerializeField] private Order _order;
-    [SerializeField] private OrderView _orderView ;
+    [SerializeField] private OrderView _orderView;
 
     [SerializeField] private VisitorState _currentState;
 
-    public Order Order { get { return _order; } set { _order = value; } }
+    public Order Order
+    {
+        get { return _order; }
+        set
+        {
+            _order = value;
+            _orderView.Initialize(_order);
+
+        }
+    }
+
     public Table Table => _table;
 
     public void Initialize(Table table, TableCharacterPosition characterPosition, Transform leavePosition)

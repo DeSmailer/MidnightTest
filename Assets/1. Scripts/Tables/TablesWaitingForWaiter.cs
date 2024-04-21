@@ -26,7 +26,6 @@ public class TablesWaitingForWaiter : MonoBehaviour
             foreach (TableCharacterPosition characterPosition in table.VisitorPositions)
             {
                 characterPosition.OnStateCange += TryAddTableToWaitingList;
-                Debug.Log("TryAddTableToWaitingList");
             }
         }
     }
@@ -45,15 +44,12 @@ public class TablesWaitingForWaiter : MonoBehaviour
 
     public Table GetTable()
     {
-        Debug.Log("TableFromWaitingList1 " + _waitingTables.Count);
         if (WaitingTables.Count > 0)
         {
-            Debug.Log("TableFromWaitingList2 " + _waitingTables.Count);
             return WaitingTables.FirstOrDefault(x => x.WaiterPosition.State != CharacterPositionState.Taken);
         }
         else
         {
-            Debug.Log("TableFromWaitingList3 " + _waitingTables.Count);
             return null;
         }
     }
@@ -61,7 +57,6 @@ public class TablesWaitingForWaiter : MonoBehaviour
 
     public void RemoveTableFromWaitingList(Table table)
     {
-        Debug.Log("Remove " + _waitingTables.Remove(table));
-        Debug.Log("TableFromWaitingList4 " + _waitingTables.Count);
+        _waitingTables.Remove(table);
     }
 }

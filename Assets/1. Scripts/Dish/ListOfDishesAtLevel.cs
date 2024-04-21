@@ -42,7 +42,7 @@ public class ListOfDishesAtLevel : MonoBehaviour
         DishOnLevel availableDish = GetRandomAvailableDish();
         if (availableDish != null)
         {
-            int randomIndex = Random.Range(0, 4);
+            int randomIndex = Random.Range(1, 4);
 
             return new DishCountInOrder(availableDish, randomIndex);
         }

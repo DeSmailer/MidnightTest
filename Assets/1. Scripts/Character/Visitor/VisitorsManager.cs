@@ -41,7 +41,6 @@ public class VisitorsManager : MonoBehaviour
                     visitor.Initialize(table, characterPosition, transform);
                     break;
                 }
-                Debug.Log("break");
             }
         }
     }

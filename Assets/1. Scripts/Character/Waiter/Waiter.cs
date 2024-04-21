@@ -58,9 +58,6 @@ public class Waiter : Character
             _table = table;
             _tablesWaitingForWaiter.RemoveTableFromWaitingList(_table);
 
-            Debug.Log(_table);
-            Debug.Log(_table.WaiterPosition);
-            Debug.Log(_table.WaiterPosition.position);
             GoTo(_table.WaiterPosition.position);
             _table.WaiterPosition.State = CharacterPositionState.Taken;
 
@@ -75,8 +72,6 @@ public class Waiter : Character
     {
         return true;
     }
-
-
 
     private void Update()
     {
@@ -100,17 +95,11 @@ public class Waiter : Character
 
     private void TryTakesOrder()
     {
-        Debug.Log("TakesOrder");
         foreach (TableCharacterPosition item in _table.VisitorPositions)
         {
-            Debug.Log("+++++++");
             Visitor character = (Visitor)item.character;
-            Debug.Log("character");
-            Debug.Log(CharacterPositionState.Waiting.ToString());
-            Debug.Log(character.Order);
             if (item.State == CharacterPositionState.Waiting && character.Order == null)
             {
-                Debug.Log("StartCoroutine");
                 StartCoroutine(TakesOrder(_orderCreationTime, character));
                 return;
             }
@@ -121,7 +110,6 @@ public class Waiter : Character
     private IEnumerator TakesOrder(float orderCreationTime, Visitor visitor)
     {
         _progressBar.Toggle(true);
-        Debug.Log("TakesOrder I");
         float duration = orderCreationTime;
         while (duration > 0)
         {
