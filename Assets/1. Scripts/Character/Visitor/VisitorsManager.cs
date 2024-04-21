@@ -26,6 +26,7 @@ public class VisitorsManager : MonoBehaviour
         _availableTables.Add(table);
 
         SpawnVisitor();
+        SpawnVisitor();
     }
 
     public void SpawnVisitor()
@@ -37,7 +38,7 @@ public class VisitorsManager : MonoBehaviour
             {
                 if (characterPosition.State == CharacterPositionState.Free)
                 {
-                    visitor.Initialize(characterPosition, transform);
+                    visitor.Initialize(table, characterPosition, transform);
                     break;
                 }
                 Debug.Log("break");

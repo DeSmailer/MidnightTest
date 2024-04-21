@@ -1,23 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Visitor : Character
 {
     [SerializeField] private TableCharacterPosition _characterPosition;
+    [SerializeField] private Table _table;
     [SerializeField] private Transform _tablePosition;
     [SerializeField] private Transform _leavePosition;
 
+    [SerializeField] private Order _order;
+
     [SerializeField] private VisitorState _currentState;
 
-    public void Initialize(TableCharacterPosition characterPosition, Transform leavePosition)
+    public Order Order { get { return _order; } set { _order = value; } }
+    public Table Table => _table;
+
+    public void Initialize(Table table, TableCharacterPosition characterPosition, Transform leavePosition)
     {
         base.Initialize();
 
+        _table = table;
         _characterPosition = characterPosition;
         _tablePosition = characterPosition.position;
         _characterPosition.State = CharacterPositionState.Taken;
+        _characterPosition.character = this;
 
         _leavePosition = leavePosition;
 

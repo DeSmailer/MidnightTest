@@ -37,6 +37,18 @@ public class ListOfDishesAtLevel : MonoBehaviour
         return null;
     }
 
+    public DishCountInOrder GetRandomDishCountInOrder()
+    {
+        DishOnLevel availableDish = GetRandomAvailableDish();
+        if (availableDish != null)
+        {
+            int randomIndex = Random.Range(0, 4);
+
+            return new DishCountInOrder(availableDish, randomIndex);
+        }
+        return null;
+    }
+
     private void OnDestroy()
     {
         foreach (DishOnLevel dishOnLevel in _dishsOnLevel)

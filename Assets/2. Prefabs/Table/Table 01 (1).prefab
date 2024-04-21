@@ -194,14 +194,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6274fd72f20464f858f39b8ec8c5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waiterPositions:
+  _waiterPosition:
     table: {fileID: 1594641357368371329}
     position: {fileID: 242035838446257347}
+    character: {fileID: 0}
   _visitorPositions:
   - table: {fileID: 1594641357368371329}
     position: {fileID: 2144390157573756588}
+    character: {fileID: 0}
   - table: {fileID: 1594641357368371329}
     position: {fileID: 3204581079095312504}
+    character: {fileID: 0}
 --- !u!114 &5901545524641128033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,5 +219,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: "\u0421\u0442\u043E\u043B"
   _number: 0
-  _table: {fileID: 1594641357368371329}
   _isPurchased: 0
+  _table: {fileID: 1594641357368371329}

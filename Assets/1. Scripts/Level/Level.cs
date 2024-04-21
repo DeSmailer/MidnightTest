@@ -40,7 +40,7 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < _waiters.Count; i++)
         {
-            _waiters[i].Initialize(_tablesWaitingForWaiter);
+            _waiters[i].Initialize(_tablesWaitingForWaiter, _listOfDishes);
         }
     }
 

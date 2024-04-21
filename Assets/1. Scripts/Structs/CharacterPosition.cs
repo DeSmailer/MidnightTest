@@ -6,6 +6,8 @@ public class TableCharacterPosition
 {
     public Table table;
     public Transform position;
+    public Character character;
+
     private CharacterPositionState _state;
 
     public CharacterPositionState State
