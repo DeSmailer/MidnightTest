@@ -6,17 +6,17 @@ public class VisitorsManager : MonoBehaviour
 {
     [SerializeField] private Visitor _visitorPrefab;
     [SerializeField] private Transform _visitorSpawnPosition;
-    [SerializeField] private List<Table> _tables;
+    [SerializeField] private List<TableBuyer> _tableBuyers;
 
     [SerializeField] private List<Table> _availableTables = new List<Table>();
     private int _numberOfVisitors;
 
-    public void Initialize(List<Table> tables)
+    public void Initialize(List<TableBuyer> tableBuyers)
     {
-        _tables = tables;
-        foreach (Table table in _tables)
+        _tableBuyers = tableBuyers;
+        foreach (TableBuyer tableBuyer in _tableBuyers)
         {
-            table.OnPurchase += TablePurchaseHandler;
+            tableBuyer.OnPurchase += TablePurchaseHandler;
         }
     }
 
@@ -33,7 +33,7 @@ public class VisitorsManager : MonoBehaviour
         Visitor visitor = Instantiate(_visitorPrefab, _visitorSpawnPosition.position, _visitorSpawnPosition.rotation);
         foreach (Table table in _availableTables)
         {
-            foreach (CharacterPosition characterPosition in table.VisitorPositions)
+            foreach (TableCharacterPosition characterPosition in table.VisitorPositions)
             {
                 if (characterPosition.State == CharacterPositionState.Free)
                 {
@@ -47,9 +47,9 @@ public class VisitorsManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (Table table in _tables)
+        foreach (TableBuyer tableBuyer in _tableBuyers)
         {
-            table.OnPurchase -= TablePurchaseHandler;
+            tableBuyer.OnPurchase -= TablePurchaseHandler;
         }
     }
 }

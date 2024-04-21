@@ -2,47 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Table : MonoBehaviour, IPurchased
+public class Table : MonoBehaviour
 {
-    [SerializeField] private CharacterPosition _waiterPositions;
-    [SerializeField] private List<CharacterPosition> _visitorPositions;
+    [SerializeField] private TableCharacterPosition _waiterPositions;
+    [SerializeField] private List<TableCharacterPosition> _visitorPositions;
 
-    [SerializeField] private string _name = "Стол";
-    [SerializeField] protected int _number;
-    //[Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
+    public TableCharacterPosition WaiterPositions => _waiterPositions;
+    public List<TableCharacterPosition> VisitorPositions => _visitorPositions;
 
-    [SerializeField] protected bool _isPurchased;
-
-    public string Name => _name;
-    public double Price => TableCostCalculator.GetCost(_number);
-    public bool IsPurchased => _isPurchased;
-
-    public Action<Table> OnPurchase;
-
-    public CharacterPosition WaiterPositions => _waiterPositions;
-    public List<CharacterPosition> VisitorPositions => _visitorPositions;
-
-    public void Initialize()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public bool CanBuy(CurrencyManager currencyManager)
-    {
-        if (currencyManager.Currency >= Price)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void Buy(CurrencyManager currencyManager)
-    {
-        currencyManager.SubtractCurrency(Price);
-
-        gameObject.SetActive(true);
-
-        _isPurchased = true;
-        OnPurchase?.Invoke(this);
-    }
 }

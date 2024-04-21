@@ -10,7 +10,7 @@ public class ShoppingList : MonoBehaviour
 
     public List<IPurchased> Purchases => _purchases;
 
-    private void Awake()
+    public void Initialize()
     {
         _purchases = new List<IPurchased>();
 
@@ -20,6 +20,7 @@ public class ShoppingList : MonoBehaviour
             if (purchased != null)
             {
                 _purchases.Add(purchased);
+                purchased.MakeInactive();
             }
         }
 

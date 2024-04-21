@@ -30,7 +30,10 @@ public class MainHob : MonoBehaviour, IPurchased
     {
         _dishOnLevel = dishOnLevel;
         _demonstrationHob.Initialize(_dishOnLevel.DishModelPrefab);
+    }
 
+    public void MakeInactive()
+    {
         _demonstrationHob.gameObject.SetActive(false);
         for (int i = 0; i < _hobs.Length; i++)
         {

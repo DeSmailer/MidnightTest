@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected float _angularSpeed = 120f;
     [SerializeField] protected float _stopDistance = 0.5f;
 
-    [SerializeField] private Animator _animator;
+    [SerializeField] protected Animator _animator;
 
     protected virtual void GoTo(Transform position)
     {

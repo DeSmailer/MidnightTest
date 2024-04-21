@@ -5,16 +5,16 @@ using UnityEngine.AI;
 
 public class Waiter : Character
 {
-    [SerializeField] private CharacterPosition _characterPosition;
+    [SerializeField] private TableCharacterPosition _characterPosition;
 
     [SerializeField] private WaiterState _currentState;
+    [SerializeField] private TablesWaitingForWaiter _tablesWaitingForWaiter;
 
-    [SerializeField] private Animator _animator;
-
-    public override void Initialize()
+    public void Initialize(TablesWaitingForWaiter tablesWaitingForWaiter)
     {
         base.Initialize();
 
+        _tablesWaitingForWaiter = tablesWaitingForWaiter;
         //_characterPosition = characterPosition;
 
         _currentState = WaiterState.Idle;

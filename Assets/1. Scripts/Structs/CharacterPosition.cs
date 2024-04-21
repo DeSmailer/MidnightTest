@@ -2,8 +2,9 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class CharacterPosition
+public class TableCharacterPosition
 {
+    public Table table;
     public Transform position;
     private CharacterPositionState _state;
 
@@ -13,9 +14,9 @@ public class CharacterPosition
         set
         {
             _state = value;
-            OnStateCange?.Invoke(this);
+            OnStateCange?.Invoke(this, _state);
         }
     }
 
-    public Action<CharacterPosition> OnStateCange;
+    public Action<TableCharacterPosition, CharacterPositionState> OnStateCange;
 }

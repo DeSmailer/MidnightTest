@@ -6,17 +6,18 @@ public class WaiterManager : MonoBehaviour
 {
     [SerializeField] private Waiter _waiterPrefab;
     [SerializeField] private Transform _spawnPosition;
-    [SerializeField] private List<Table> _tables;
+    [SerializeField] private List<TableBuyer> _tableBuyers;
 
     [SerializeField] private List<Table> _availableTables = new List<Table>();
+    [SerializeField] private List<Waiter> _waiters;
     private int _numberOfWaiters;
 
-    public void Initialize(List<Table> tables)
+    public void Initialize(List<TableBuyer> tableBuyers)
     {
-        _tables = tables;
-        foreach (Table table in _tables)
+        _tableBuyers = tableBuyers;
+        foreach (TableBuyer tableBuyer in _tableBuyers)
         {
-            table.OnPurchase += TablePurchaseHandler;
+            tableBuyer.OnPurchase += TablePurchaseHandler;
         }
     }
 
@@ -30,33 +31,15 @@ public class WaiterManager : MonoBehaviour
 
     public void SpawnWaiter()
     {
-        Waiter visitor = Instantiate(_waiterPrefab, _spawnPosition.position, _spawnPosition.rotation);
-       
-    }
-
-    public void Check()
-    {
-        foreach (Table table in _availableTables)
-        {
-            foreach (CharacterPosition characterPosition in table.VisitorPositions)
-            {
-                if (characterPosition.State == CharacterPositionState.Free)
-                {
-                    visitor.Initialize(characterPosition, transform);
-                    break;
-                }
-                Debug.Log("break");
-            }
-        }
-
-        //TODO
+        Waiter waiter = Instantiate(_waiterPrefab, _spawnPosition.position, _spawnPosition.rotation);
+        _waiters.Add(waiter);
     }
 
     private void OnDestroy()
     {
-        foreach (Table table in _tables)
+        foreach (TableBuyer tableBuyer in _tableBuyers)
         {
-            table.OnPurchase -= TablePurchaseHandler;
+            tableBuyer.OnPurchase -= TablePurchaseHandler;
         }
     }
 }

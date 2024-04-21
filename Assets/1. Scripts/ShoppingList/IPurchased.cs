@@ -6,4 +6,5 @@ public interface IPurchased
 
     public bool CanBuy(CurrencyManager currencyManager);
     public void Buy(CurrencyManager currencyManager);
+    public void MakeInactive();
 }

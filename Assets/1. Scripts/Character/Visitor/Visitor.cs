@@ -5,15 +5,13 @@ using UnityEngine.AI;
 
 public class Visitor : Character
 {
-    [SerializeField] private CharacterPosition _characterPosition;
+    [SerializeField] private TableCharacterPosition _characterPosition;
     [SerializeField] private Transform _tablePosition;
     [SerializeField] private Transform _leavePosition;
 
     [SerializeField] private VisitorState _currentState;
 
-    [SerializeField] private Animator _animator;
-
-    public void Initialize(CharacterPosition characterPosition, Transform leavePosition)
+    public void Initialize(TableCharacterPosition characterPosition, Transform leavePosition)
     {
         base.Initialize();
 
