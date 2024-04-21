@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
     [SerializeField] private List<MainHob> _mainHobs;
     [SerializeField] private List<Table> _tables;
     [SerializeField] private List<TableBuyer> _tableBuyers;
+    [SerializeField] private List<Waiter> _waiters;
     [SerializeField] private ListOfDishesAtLevel _listOfDishes;
     [SerializeField] private VisitorsManager _visitorsManager;
     [SerializeField] private TablesWaitingForWaiter _tablesWaitingForWaiter;
@@ -22,6 +23,8 @@ public class Level : MonoBehaviour
         _visitorsManager.Initialize(_tableBuyers);
         _tablesWaitingForWaiter.Initialize(_tables);
 
+        InitializeWaiters();
+
         StartCoroutine(Test());
     }
 
@@ -30,6 +33,14 @@ public class Level : MonoBehaviour
         for (int i = 0; i < _mainHobs.Count; i++)
         {
             _mainHobs[i].Initialize(_listOfDishes.DishsOnLevel[i]);
+        }
+    }
+
+    public void InitializeWaiters()
+    {
+        for (int i = 0; i < _waiters.Count; i++)
+        {
+            _waiters[i].Initialize(_tablesWaitingForWaiter);
         }
     }
 

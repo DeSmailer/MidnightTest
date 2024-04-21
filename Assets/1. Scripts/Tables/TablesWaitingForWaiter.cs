@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TablesWaitingForWaiter : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class TablesWaitingForWaiter : MonoBehaviour
     [SerializeField] private HashSet<Table> _waitingTables;
 
     public HashSet<Table> WaitingTables => _waitingTables;
+
+    public UnityEvent OnAddedToWaitingList;
 
     public void Initialize(List<Table> tables)
     {
@@ -32,6 +36,26 @@ public class TablesWaitingForWaiter : MonoBehaviour
         if (state == CharacterPositionState.Waiting)
         {
             _waitingTables.Add(characterPosition.table);
+            OnAddedToWaitingList?.Invoke();
         }
+    }
+
+    public Table GatTable()
+    {
+        if (WaitingTables.Count > 0)
+        {
+            return WaitingTables.FirstOrDefault();
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
+    public void RemoveTableFromWaitingList(Table table)
+    {
+        _waitingTables.Remove(table);
+
     }
 }
