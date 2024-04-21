@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
+//[Serializable]
 public class Order
 {
     public List<DishCountInOrder> dishCountInOrders;
@@ -13,6 +16,8 @@ public class Order
 
         this.table = table;
         this.visitor = visitor;
+
+        Debug.Log("dishCountInOrder " + dishCountInOrder.dish.Name + " table " + table + " visitor " + visitor);
     }
 
     public Order(List<DishCountInOrder> dishCountInOrders, Table table, Visitor visitor)

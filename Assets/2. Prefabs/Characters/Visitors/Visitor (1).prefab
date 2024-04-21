@@ -1326,13 +1326,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 6859937636077796359}
-  _speed: 5
+  _speed: 10
   _angularSpeed: 120
   _stopDistance: 0.5
   _animator: {fileID: 4209176231374618854}
   _characterPosition:
     table: {fileID: 0}
     position: {fileID: 0}
+    character: {fileID: 0}
+  _table: {fileID: 0}
   _tablePosition: {fileID: 0}
   _leavePosition: {fileID: 0}
   _currentState: 0

@@ -4197,6 +4197,7 @@ GameObject:
   - component: {fileID: 1631305598}
   - component: {fileID: 1631305599}
   - component: {fileID: 1631305600}
+  - component: {fileID: 1631305601}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -4300,6 +4301,18 @@ MonoBehaviour:
   _tableBuyers: []
   _availableTables: []
   _waiters: []
+--- !u!114 &1631305601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631305594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6cc6907460298844b90406e1b03f2ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1714750051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6329,11 +6342,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.62
       objectReference: {fileID: 0}
+    - target: {fileID: 821429340405382054, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _number
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1386199663949101834, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _hobUpgradeView
       value: 
       objectReference: {fileID: 1088075929}
+    - target: {fileID: 1937181258091526874, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937181258091526874, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _isPurchased
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2063710789749459471, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _hobUpgradeView
@@ -6359,6 +6387,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.98
       objectReference: {fileID: 0}
+    - target: {fileID: 3581382388678524346, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _number
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363271506694446692, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _number
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4514308632632272530, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6374,6 +6412,11 @@ PrefabInstance:
       propertyPath: _hobUpgradeView
       value: 
       objectReference: {fileID: 1088075929}
+    - target: {fileID: 5141193034385104397, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _number
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5226785112592111613, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: m_Name
@@ -6384,6 +6427,11 @@ PrefabInstance:
       propertyPath: _hobUpgradeView
       value: 
       objectReference: {fileID: 1088075929}
+    - target: {fileID: 6206014400730431145, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: _number
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6233462151313595337, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _shoppingListView

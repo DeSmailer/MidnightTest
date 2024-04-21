@@ -14,6 +14,7 @@ public class WaiterBuyer : Buyer, IPurchased
     {
         base.Buy(currencyManager);
 
+        _waiter.FindJob();
         OnPurchase?.Invoke(_waiter);
     }
 }

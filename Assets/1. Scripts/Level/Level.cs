@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
     [SerializeField] private ListOfDishesAtLevel _listOfDishes;
     [SerializeField] private VisitorsManager _visitorsManager;
     [SerializeField] private TablesWaitingForWaiter _tablesWaitingForWaiter;
+    [SerializeField] private OrderManager _orderManager;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class Level : MonoBehaviour
 
         InitializeWaiters();
 
-        StartCoroutine(Test());
+        //StartCoroutine(Test());
     }
 
     public void InitializeMainHobs()
@@ -40,22 +41,22 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < _waiters.Count; i++)
         {
-            _waiters[i].Initialize(_tablesWaitingForWaiter, _listOfDishes);
+            _waiters[i].Initialize(_tablesWaitingForWaiter, _listOfDishes, _orderManager);
         }
     }
 
-    private IEnumerator Test()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(2f);
+    //private IEnumerator Test()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(2f);
 
-            DishOnLevel dishOnLevel = _listOfDishes.GetRandomAvailableDish();
-            if (dishOnLevel != null)
-            {
-                Debug.Log(dishOnLevel.Name);
+    //        DishOnLevel dishOnLevel = _listOfDishes.GetRandomAvailableDish();
+    //        if (dishOnLevel != null)
+    //        {
+    //            Debug.Log(dishOnLevel.Name);
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 }

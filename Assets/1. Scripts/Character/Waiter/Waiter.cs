@@ -9,16 +9,19 @@ public class Waiter : Character
     [SerializeField] private WaiterState _currentState;
     [SerializeField] private TablesWaitingForWaiter _tablesWaitingForWaiter;
     [SerializeField] private ListOfDishesAtLevel _listOfDishesAtLevel;
+    [SerializeField] private OrderManager _orderManager;
 
     private bool _isBusy = false;
     [SerializeField] private float _orderCreationTime = 1f;
 
-    public void Initialize(TablesWaitingForWaiter tablesWaitingForWaiter, ListOfDishesAtLevel listOfDishesAtLevel)
+    public void Initialize(TablesWaitingForWaiter tablesWaitingForWaiter,
+        ListOfDishesAtLevel listOfDishesAtLevel, OrderManager orderManager)
     {
         base.Initialize();
 
         _tablesWaitingForWaiter = tablesWaitingForWaiter;
         _listOfDishesAtLevel = listOfDishesAtLevel;
+        _orderManager = orderManager;
 
         _currentState = WaiterState.Idle;
 
@@ -40,7 +43,7 @@ public class Waiter : Character
 
     public bool FindJobTakesOrder()
     {
-        Table table = _tablesWaitingForWaiter.GatTable();
+        Table table = _tablesWaitingForWaiter.GetTable();
         if (table != null)
         {
             if (table.WaiterPosition.State == CharacterPositionState.Taken)
@@ -94,11 +97,16 @@ public class Waiter : Character
     private void TryTakesOrder()
     {
         Debug.Log("TakesOrder");
-        foreach (var item in _table.VisitorPositions)
+        foreach (TableCharacterPosition item in _table.VisitorPositions)
         {
+            Debug.Log("+++++++");
             Visitor character = (Visitor)item.character;
+            Debug.Log("character");
+            Debug.Log(CharacterPositionState.Waiting.ToString());
+            Debug.Log(character.Order);
             if (item.State == CharacterPositionState.Waiting && character.Order == null)
             {
+                Debug.Log("StartCoroutine");
                 StartCoroutine(TakesOrder(_orderCreationTime, character));
                 return;
             }
@@ -115,8 +123,10 @@ public class Waiter : Character
             yield return null;
             duration -= Time.deltaTime;
         }
-        DishCountInOrder dishCountInOrder  = _listOfDishesAtLevel.GetRandomDishCountInOrder();
-        visitor.Order = new Order(dishCountInOrder, visitor.Table, visitor);
+        DishCountInOrder dishCountInOrder = _listOfDishesAtLevel.GetRandomDishCountInOrder();
+        Order order = new Order(dishCountInOrder, visitor.Table, visitor);
+        visitor.Order = order;
+        _orderManager.AddOrder(order);
         TryTakesOrder();
     }
 

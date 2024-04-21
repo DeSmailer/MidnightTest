@@ -6,9 +6,9 @@ using UnityEngine.Events;
 public class TablesWaitingForWaiter : MonoBehaviour
 {
     [SerializeField] private List<Table> _tables;
-    [SerializeField] private HashSet<Table> _waitingTables;
+    [SerializeField] private List<Table> _waitingTables;
 
-    public HashSet<Table> WaitingTables => _waitingTables;
+    public List<Table> WaitingTables => _waitingTables;
 
     public UnityEvent OnAddedToWaitingList;
 
@@ -20,7 +20,7 @@ public class TablesWaitingForWaiter : MonoBehaviour
 
     public void SubscribeOnEvents()
     {
-        _waitingTables = new HashSet<Table>();
+        _waitingTables = new List<Table>();
         foreach (Table table in _tables)
         {
             foreach (TableCharacterPosition characterPosition in table.VisitorPositions)
@@ -35,19 +35,25 @@ public class TablesWaitingForWaiter : MonoBehaviour
     {
         if (state == CharacterPositionState.Waiting)
         {
-            _waitingTables.Add(characterPosition.table);
-            OnAddedToWaitingList?.Invoke();
+            if (!_waitingTables.Contains(characterPosition.table))
+            {
+                _waitingTables.Add(characterPosition.table);
+                OnAddedToWaitingList?.Invoke();
+            }
         }
     }
 
-    public Table GatTable()
+    public Table GetTable()
     {
+        Debug.Log("TableFromWaitingList1 " + _waitingTables.Count);
         if (WaitingTables.Count > 0)
         {
-            return WaitingTables.FirstOrDefault();
+            Debug.Log("TableFromWaitingList2 " + _waitingTables.Count);
+            return WaitingTables.FirstOrDefault(x => x.WaiterPosition.State != CharacterPositionState.Taken);
         }
         else
         {
+            Debug.Log("TableFromWaitingList3 " + _waitingTables.Count);
             return null;
         }
     }
@@ -55,7 +61,7 @@ public class TablesWaitingForWaiter : MonoBehaviour
 
     public void RemoveTableFromWaitingList(Table table)
     {
-        _waitingTables.Remove(table);
-
+        Debug.Log("Remove " + _waitingTables.Remove(table));
+        Debug.Log("TableFromWaitingList4 " + _waitingTables.Count);
     }
 }
