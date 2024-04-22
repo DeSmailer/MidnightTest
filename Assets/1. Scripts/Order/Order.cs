@@ -1,30 +1,19 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 //[Serializable]
 public class Order
 {
-    public List<DishCountInOrder> dishCountInOrders;
+    public DishCountInOrder dishCountInOrder;
     public Table table;
     public Visitor visitor;
 
     public Order(DishCountInOrder dishCountInOrder, Table table, Visitor visitor)
     {
-        dishCountInOrders = new List<DishCountInOrder>();
-        dishCountInOrders.Add(dishCountInOrder);
+        this.dishCountInOrder = dishCountInOrder;
 
         this.table = table;
         this.visitor = visitor;
 
-    }
-
-    public Order(List<DishCountInOrder> dishCountInOrders, Table table, Visitor visitor)
-    {
-        this.dishCountInOrders = dishCountInOrders;
-
-        this.table = table;
-        this.visitor = visitor;
     }
 }
 
