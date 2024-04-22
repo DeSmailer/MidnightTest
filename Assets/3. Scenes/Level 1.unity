@@ -6289,6 +6289,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 104789908402001573, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03999996
+      objectReference: {fileID: 0}
     - target: {fileID: 261930996244901232, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6339,6 +6344,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1035074628879809991, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03999996
+      objectReference: {fileID: 0}
     - target: {fileID: 1386199663949101834, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _hobUpgradeView
@@ -6369,6 +6379,21 @@ PrefabInstance:
       propertyPath: _dishesForCooking
       value: 
       objectReference: {fileID: 1631305602}
+    - target: {fileID: 3756338331498747492, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410746669071669285, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049915685039789859, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03999996
+      objectReference: {fileID: 0}
     - target: {fileID: 5050898236543765806, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _hobUpgradeView
@@ -6378,6 +6403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794052975087748119, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03999996
       objectReference: {fileID: 0}
     - target: {fileID: 5894650447495289007, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
@@ -6389,11 +6419,21 @@ PrefabInstance:
       propertyPath: _shoppingListView
       value: 
       objectReference: {fileID: 567303465}
+    - target: {fileID: 6255702357311581617, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 7441510662484702356, guid: 78e0d7c948c4bba41b0fd797e11516cb,
         type: 3}
       propertyPath: _hobUpgradeView
       value: 
       objectReference: {fileID: 1088075929}
+    - target: {fileID: 7468334414692177121, guid: 78e0d7c948c4bba41b0fd797e11516cb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

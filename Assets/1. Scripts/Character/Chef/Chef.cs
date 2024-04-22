@@ -15,7 +15,7 @@ public class Chef : Character
     private Hob _hob;
     private DishInOrder _dishInOrder;
     private CookedDish _cookedDish;
-    [SerializeField] private Transform _readyDishPosition;
+    [SerializeField] private ReadyDishPosition _readyDishPosition;
 
     [SerializeField] private ChefState _currentState;
 
@@ -86,6 +86,7 @@ public class Chef : Character
                     {
                         _hob = hob;
                         _dishInOrder = dishInOrder;
+                        _dishesForCooking.RemoveFromList(_dishInOrder);
                         _hob.CurrentState = HobState.Taken;
                         GoTo(_hob.HobCharacterPosition.position);
                         _currentState = ChefState.MoveToHob;
@@ -113,12 +114,20 @@ public class Chef : Character
                 _animator.Play(IDLE_ANIMATION);
                 break;
             case ChefState.CarriesDish:
-                RotateToPosition(_readyDishPosition, ChefState.Idle, FindJob);
+                RotateToPosition(_readyDishPosition.movePosition, ChefState.Idle, PutDish);
                 _animator.Play(WALK_ANIMATION);
                 break;
             default:
                 break;
         }
+    }
+
+    private void PutDish()
+    {
+        _readyDishPosition.Put(_cookedDish);
+        _currentState = ChefState.Idle;
+        _isBusy = false;
+        FindJob();
     }
 
     private void Cook()
@@ -134,13 +143,10 @@ public class Chef : Character
         _progressBar.Toggle(true);
         float dishCreationTime = (float)_hob.MainHob.HobData.CookingDuration;
         float duration = dishCreationTime;
-        Debug.Log("dishCreationTime " + dishCreationTime);
-        Debug.Log("duration1 " + duration);
         while (duration > 0)
         {
             yield return null;
             duration -= Time.deltaTime;
-            Debug.Log("duration2 " + duration);
             _progressBar.UpdateProcessUI(duration, dishCreationTime);
         }
         _progressBar.Toggle(false);
@@ -155,7 +161,7 @@ public class Chef : Character
         _dishInOrder = null;
 
         _readyDishPosition = _standForReadyDishes.GetPosition();
-        GoTo(_readyDishPosition);
+        GoTo(_readyDishPosition.movePosition);
         _currentState = ChefState.CarriesDish;
     }
 
@@ -176,7 +182,6 @@ public class Chef : Character
             {
                 _currentState = newState;
                 action?.Invoke();
-                //_characterPosition.State = CharacterPositionState.Waiting;
             }
         }
     }

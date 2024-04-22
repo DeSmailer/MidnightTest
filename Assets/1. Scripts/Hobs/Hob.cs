@@ -22,6 +22,7 @@ public class Hob : MonoBehaviour
 
     public HobCharacterPosition HobCharacterPosition => _characterPosition;
     public MainHob MainHob => _mainHob;
+
     public HobState CurrentState
     {
         get { return _currentState; }
@@ -39,17 +40,17 @@ public class Hob : MonoBehaviour
         _mainHob = mainHob;
     }
 
-    public bool IsFree()
-    {
-        if (_characterPosition.State == CharacterPositionState.Free)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+    //public bool IsFree()
+    //{
+    //    if (_characterPosition.State == CharacterPositionState.Free)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
 }
 
 public enum HobState

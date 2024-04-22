@@ -72,17 +72,29 @@ public class MainHob : MonoBehaviour, IPurchased
 
     private void ActivateHobs()
     {
-
-
         for (int i = 0; i < HobData.CurrentNumberOfJobs; i++)
         {
-            _hobs[i].gameObject.SetActive(true);
-            _activeHobs.Add(_hobs[i]);
+            if (!_activeHobs.Contains(_hobs[i]))
+            {
+                _hobs[i].gameObject.SetActive(true);
+                _activeHobs.Add(_hobs[i]);
+            }
         }
     }
 
     public Hob GetFreeHob()
     {
+        int i = 0;
+        foreach (var item in ActiveHobs)
+        {
+            Debug.Log(i);
+            i++;
+            if (item.CurrentState == HobState.Free)
+            {
+                Debug.Log(item);
+                return item;
+            }
+        }
         Hob hob = ActiveHobs.FirstOrDefault(x => x.CurrentState == HobState.Free);
         return hob;
     }

@@ -41,6 +41,14 @@ public class DishesForCooking : MonoBehaviour
         }
     }
 
+    public void RemoveFromList(DishInOrder dishInOrder)
+    {
+        if (dishInOrder != null)
+        {
+            _dishes.Remove(dishInOrder);
+        }
+    }
+
     public DishInOrder GetAndRemoveFromList()
     {
         DishInOrder dishInOrder = GetFromList();
