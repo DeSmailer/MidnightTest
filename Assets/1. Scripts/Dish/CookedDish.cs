@@ -5,14 +5,14 @@ using UnityEngine;
 public class CookedDish : MonoBehaviour
 {
     [SerializeField] private Transform _dishModelPosition;
-    [SerializeField] private DishOnLevel _dishOnLevel;
+    [SerializeField] private DishInOrder _dishInOrder;
     [SerializeField] private double _cost;
 
-    public void Initialize(DishOnLevel dishOnLevel, double cost)
+    public void Initialize(DishInOrder dishInOrder, double cost)
     {
-        _dishOnLevel = dishOnLevel;
+        _dishInOrder = dishInOrder;
         _cost = cost;
 
-        Instantiate(_dishOnLevel.DishModelPrefab, _dishModelPosition.position, _dishModelPosition.rotation, _dishModelPosition);
+        Instantiate(_dishInOrder.dish.DishModelPrefab, _dishModelPosition.position, _dishModelPosition.rotation, _dishModelPosition);
     }
 }

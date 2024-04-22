@@ -16,6 +16,7 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void GoTo(Transform position)
     {
+        _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(position.position);
     }
 

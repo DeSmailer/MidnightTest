@@ -548,6 +548,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7366115231290902401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3314358305758258409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119597832921519073}
+  m_Layer: 0
+  m_Name: Hands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119597832921519073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3314358305758258409}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.016, y: 0.207, z: 0.652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6160618561538097253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3318372845938187643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1327,7 @@ Transform:
   - {fileID: 8736297779361654006}
   - {fileID: 5133325315463061343}
   - {fileID: 5532185913199795307}
+  - {fileID: 1119597832921519073}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4209176231374618854
@@ -1350,10 +1382,15 @@ MonoBehaviour:
   _navMeshAgent: {fileID: -2791551546218968834}
   _speed: 5
   _angularSpeed: 120
-  _stopDistance: 0.5
+  _stopDistance: 0.7
   _animator: {fileID: 4209176231374618854}
   _mainHobs: []
   _dishesForCooking: {fileID: 0}
+  _standForReadyDishes: {fileID: 0}
+  _hands: {fileID: 1119597832921519073}
+  _cookedDishPrefab: {fileID: 8284302399816786565, guid: 98d1045ab2fa90744a90e41b4f84c2ed,
+    type: 3}
+  _readyDishPosition: {fileID: 0}
   _currentState: 0
   _progressBar: {fileID: 4242828817816426172}
 --- !u!195 &-2791551546218968834

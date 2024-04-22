@@ -21,6 +21,7 @@ public class Hob : MonoBehaviour
     [SerializeField] private HobState _currentState;
 
     public HobCharacterPosition HobCharacterPosition => _characterPosition;
+    public MainHob MainHob => _mainHob;
     public HobState CurrentState
     {
         get { return _currentState; }

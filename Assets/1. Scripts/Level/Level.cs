@@ -14,7 +14,8 @@ public class Level : MonoBehaviour
     [SerializeField] private VisitorsManager _visitorsManager;
     [SerializeField] private TablesWaitingForWaiter _tablesWaitingForWaiter;
     [SerializeField] private OrderManager _orderManager;
-    [SerializeField] private DishesForCooking _dishesForCooking ;
+    [SerializeField] private DishesForCooking _dishesForCooking;
+    [SerializeField] private StandForReadyDishes _standForReadyDishes;
 
     private void Start()
     {
@@ -47,12 +48,12 @@ public class Level : MonoBehaviour
             _waiters[i].Initialize(_tablesWaitingForWaiter, _listOfDishes, _orderManager);
         }
     }
-    
+
     public void InitializeChefs()
     {
         for (int i = 0; i < _chefs.Count; i++)
         {
-            _chefs[i].Initialize(_dishesForCooking, _mainHobs);
+            _chefs[i].Initialize(_dishesForCooking, _mainHobs, _standForReadyDishes);
         }
     }
 

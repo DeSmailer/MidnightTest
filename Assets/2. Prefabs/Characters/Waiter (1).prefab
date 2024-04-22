@@ -1337,9 +1337,6 @@ MonoBehaviour:
   _stopDistance: 0.5
   _animator: {fileID: 4209176231374618854}
   _currentState: 0
-  _tablesWaitingForWaiter: {fileID: 0}
-  _listOfDishesAtLevel: {fileID: 0}
-  _orderManager: {fileID: 0}
   _progressBar: {fileID: 5534040529133713394}
   _orderCreationTime: 1
 --- !u!114 &4235778710004476433
@@ -1516,11 +1513,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6160618561538097253}
     m_Modifications:
-    - target: {fileID: 1794491049636616800, guid: 636ecee782711d44395b0fcdffb4f7f6,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1834487073867486616, guid: 636ecee782711d44395b0fcdffb4f7f6,
         type: 3}
       propertyPath: m_Name
@@ -1626,28 +1618,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7803463229017485773, guid: 636ecee782711d44395b0fcdffb4f7f6,
-        type: 3}
-      propertyPath: _image
-      value: 
-      objectReference: {fileID: 4062378311402303409}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 636ecee782711d44395b0fcdffb4f7f6, type: 3}
---- !u!114 &4062378311402303409 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1794635459665291662, guid: 636ecee782711d44395b0fcdffb4f7f6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2344023534126876223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &4245512465786191141 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1904094535318010650, guid: 636ecee782711d44395b0fcdffb4f7f6,

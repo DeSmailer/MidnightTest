@@ -9,7 +9,9 @@ public class ProgressBar : MonoBehaviour
     {
         float t = totalProcess - timeLeft;
         if (_image != null)
+        {
             _image.fillAmount = t / totalProcess;
+        }
     }
 
     public void Toggle(bool result)

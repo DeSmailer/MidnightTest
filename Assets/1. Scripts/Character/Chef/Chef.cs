@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,15 @@ public class Chef : Character
 {
     [SerializeField] private List<MainHob> _mainHobs;
     [SerializeField] private DishesForCooking _dishesForCooking;
+    [SerializeField] private StandForReadyDishes _standForReadyDishes;
+
+    [SerializeField] private Transform _hands;
+    [SerializeField] private CookedDish _cookedDishPrefab;
 
     private Hob _hob;
+    private DishInOrder _dishInOrder;
+    private CookedDish _cookedDish;
+    [SerializeField] private Transform _readyDishPosition;
 
     [SerializeField] private ChefState _currentState;
 
@@ -20,13 +28,14 @@ public class Chef : Character
     //    _animator.Play(IDLE_ANIMATION);
     //}
 
-    public void Initialize(DishesForCooking dishesForCooking, List<MainHob> mainHobs)
+    public void Initialize(DishesForCooking dishesForCooking, List<MainHob> mainHobs, StandForReadyDishes standForReadyDishes)
     {
         base.Initialize();
         _progressBar.Toggle(false);
 
         _mainHobs = mainHobs;
         _dishesForCooking = dishesForCooking;
+        _standForReadyDishes = standForReadyDishes;
 
         _currentState = ChefState.Idle;
         foreach (MainHob mainHob in _mainHobs)
@@ -55,35 +64,28 @@ public class Chef : Character
 
     public bool FindJobTakesDish(int index)
     {
-        Debug.Log(index);
-        Debug.Log(_dishesForCooking.Dishes.Count);
         if (index >= _dishesForCooking.Dishes.Count)
         {
-            Debug.Log(false);
             return false;
         }
 
         DishInOrder dishInOrder = _dishesForCooking.GetFromList(index);
-        Debug.Log(dishInOrder);
         if (dishInOrder != null)
         {
             foreach (MainHob mainHob in _mainHobs)
             {
-                Debug.Log(mainHob);
                 if (mainHob.DishOnLevel == dishInOrder.dish)
                 {
                     Hob hob = mainHob.GetFreeHob();
-                    Debug.Log(hob);
                     if (hob == null)
                     {
-                        Debug.Log("++");
                         index++;
                         FindJobTakesDish(index);
                     }
                     else
                     {
-                        Debug.Log("else");
                         _hob = hob;
+                        _dishInOrder = dishInOrder;
                         _hob.CurrentState = HobState.Taken;
                         GoTo(_hob.HobCharacterPosition.position);
                         _currentState = ChefState.MoveToHob;
@@ -104,13 +106,14 @@ public class Chef : Character
                 _animator.Play(IDLE_ANIMATION);
                 break;
             case ChefState.MoveToHob:
-                RotateToPosition(_hob.HobCharacterPosition.position, ChefState.Cooking /*, TryTakesOrder*/);
+                RotateToPosition(_hob.HobCharacterPosition.position, ChefState.Cooking, Cook);
                 _animator.Play(WALK_ANIMATION);
                 break;
             case ChefState.Cooking:
                 _animator.Play(IDLE_ANIMATION);
                 break;
             case ChefState.CarriesDish:
+                RotateToPosition(_readyDishPosition, ChefState.Idle, FindJob);
                 _animator.Play(WALK_ANIMATION);
                 break;
             default:
@@ -118,38 +121,43 @@ public class Chef : Character
         }
     }
 
-    //private void TryTakesOrder()
-    //{
-    //    foreach (TableCharacterPosition item in _table.VisitorPositions)
-    //    {
-    //        Visitor character = (Visitor)item.character;
-    //        if (item.State == CharacterPositionState.Waiting && character.Order == null)
-    //        {
-    //            StartCoroutine(TakesOrder(_orderCreationTime, character));
-    //            return;
-    //        }
-    //    }
-    //    FindJobTakesOrder();
-    //}
+    private void Cook()
+    {
+        _currentState = ChefState.Cooking;
+        StartCoroutine(CookDish());
 
-    //private IEnumerator TakesOrder(float orderCreationTime, Visitor visitor)
-    //{
-    //    _progressBar.Toggle(true);
-    //    float duration = orderCreationTime;
-    //    while (duration > 0)
-    //    {
-    //        yield return null;
-    //        duration -= Time.deltaTime;
-    //        _progressBar.UpdateProcessUI(duration, orderCreationTime);
-    //    }
-    //    _progressBar.Toggle(false);
+        //FindJobTakesOrder();
+    }
 
-    //    DishCountInOrder dishCountInOrder = _listOfDishesAtLevel.GetRandomDishCountInOrder();
-    //    Order order = new Order(dishCountInOrder, visitor.Table, visitor);
-    //    visitor.Order = order;
-    //    _orderManager.AddOrder(order);
-    //    TryTakesOrder();
-    //}
+    private IEnumerator CookDish()
+    {
+        _progressBar.Toggle(true);
+        float dishCreationTime = (float)_hob.MainHob.HobData.CookingDuration;
+        float duration = dishCreationTime;
+        Debug.Log("dishCreationTime " + dishCreationTime);
+        Debug.Log("duration1 " + duration);
+        while (duration > 0)
+        {
+            yield return null;
+            duration -= Time.deltaTime;
+            Debug.Log("duration2 " + duration);
+            _progressBar.UpdateProcessUI(duration, dishCreationTime);
+        }
+        _progressBar.Toggle(false);
+
+        _cookedDish = Instantiate(_cookedDishPrefab, _hands.position, Quaternion.identity, _hands);
+        _cookedDish.Initialize(_dishInOrder, _hob.MainHob.HobData.CostOfDish);
+
+
+        _hob.CurrentState = HobState.Free;
+        //  GoTo(_hob.HobCharacterPosition.position);
+        _hob = null;
+        _dishInOrder = null;
+
+        _readyDishPosition = _standForReadyDishes.GetPosition();
+        GoTo(_readyDishPosition);
+        _currentState = ChefState.CarriesDish;
+    }
 
     private void RotateToPosition(Transform newTransform, ChefState newState, Action action = null)
     {

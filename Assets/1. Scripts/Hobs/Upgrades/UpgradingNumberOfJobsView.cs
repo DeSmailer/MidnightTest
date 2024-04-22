@@ -12,11 +12,7 @@ public class UpgradingNumberOfJobsView : UpgradingCookingView
 
     public override void TryUpgrade()
     {
-        double d1 = 16125344;
-        double d2 = 15360000;
-        Debug.LogError(d1 - d2);
-
-        Debug.Log("UpgradingNumberOfJobsCost " + _hobData.UpgradingNumberOfJobsCost + " - " + "_currencyManager.Currency " + _currencyManager.Currency);
+        //Debug.Log("UpgradingNumberOfJobsCost " + _hobData.UpgradingNumberOfJobsCost + " - " + "_currencyManager.Currency " + _currencyManager.Currency);
 
         if (_hobData.UpgradingNumberOfJobsCost <= _currencyManager.Currency)
         {
