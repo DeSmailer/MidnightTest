@@ -7,7 +7,7 @@ public class DishesForCooking : MonoBehaviour
 {
     private List<DishInOrder> _dishes = new List<DishInOrder>();
 
-    public List<DishInOrder> DishInOrders => _dishes;
+    public List<DishInOrder> Dishes => _dishes;
 
     public UnityEvent OnAdded;
 
@@ -22,6 +22,18 @@ public class DishesForCooking : MonoBehaviour
         if (_dishes.Count > 0)
         {
             return _dishes.FirstOrDefault(x => x.dishInOrderState == DishInOrderState.Free);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public DishInOrder GetFromList(int index)
+    {
+        if (_dishes.Count > 0 && index < _dishes.Count)
+        {
+            return _dishes[index];
         }
         else
         {

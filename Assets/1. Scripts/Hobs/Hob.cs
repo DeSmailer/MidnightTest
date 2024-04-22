@@ -15,19 +15,40 @@ public class Hob : MonoBehaviour
      *в поваре происходит перебор всех печек и выбирается куда он пойдет
      *
      */
+    [SerializeField] private MainHob _mainHob;
+    [SerializeField] private HobCharacterPosition _characterPosition;
+
     [SerializeField] private HobState _currentState;
 
+    public HobCharacterPosition HobCharacterPosition => _characterPosition;
     public HobState CurrentState
     {
         get { return _currentState; }
         set
         {
             _currentState = value;
-            OnStateChange?.Invoke(this);
+            OnStateChange?.Invoke();
         }
     }
 
-    public Action<Hob> OnStateChange;
+    public Action OnStateChange;
+
+    public void Initialize(MainHob mainHob)
+    {
+        _mainHob = mainHob;
+    }
+
+    public bool IsFree()
+    {
+        if (_characterPosition.State == CharacterPositionState.Free)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 
 public enum HobState

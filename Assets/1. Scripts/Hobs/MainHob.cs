@@ -1,10 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MainHob : MonoBehaviour, IPurchased
 {
-    //[SerializeField] private const int LEVELS_PER_HOB = 25;
-
     [Range(1, 10)] [SerializeField] private int _serialNumberUponPurchase;
 
     [SerializeField] private int _maxCostOfDishLvl = 1;
@@ -15,7 +14,7 @@ public class MainHob : MonoBehaviour, IPurchased
     [SerializeField] private DemonstrationHob _demonstrationHob;
     [SerializeField] private Hob[] _hobs;
 
-    [SerializeField] private List<Hob> _activeHobs;
+    [SerializeField] private List<Hob> _activeHobs = new List<Hob>();
 
     [SerializeField] protected bool _isPurchased;
 
@@ -25,11 +24,17 @@ public class MainHob : MonoBehaviour, IPurchased
     public HobData HobData => _hobData;
     public List<Hob> ActiveHobs => _activeHobs;
     public DishOnLevel DishOnLevel => _dishOnLevel;
+    public Hob[] Hobs => _hobs;
+
 
     public void Initialize(DishOnLevel dishOnLevel)
     {
         _dishOnLevel = dishOnLevel;
         _demonstrationHob.Initialize(_dishOnLevel.DishModelPrefab);
+        foreach (Hob item in _hobs)
+        {
+            item.Initialize(this);
+        }
     }
 
     public void MakeInactive()
@@ -67,12 +72,18 @@ public class MainHob : MonoBehaviour, IPurchased
 
     private void ActivateHobs()
     {
-        _activeHobs = new List<Hob>();
+
 
         for (int i = 0; i < HobData.CurrentNumberOfJobs; i++)
         {
             _hobs[i].gameObject.SetActive(true);
             _activeHobs.Add(_hobs[i]);
         }
+    }
+
+    public Hob GetFreeHob()
+    {
+        Hob hob = ActiveHobs.FirstOrDefault(x => x.CurrentState == HobState.Free);
+        return hob;
     }
 }

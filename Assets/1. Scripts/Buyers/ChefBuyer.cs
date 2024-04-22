@@ -14,6 +14,7 @@ public class ChefBuyer : Buyer, IPurchased
     {
         base.Buy(currencyManager);
 
+        _chef.FindJob();
         OnPurchase?.Invoke(_chef);
     }
 }
