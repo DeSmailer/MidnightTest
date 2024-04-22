@@ -1341,6 +1341,7 @@ MonoBehaviour:
   _tablePosition: {fileID: 0}
   _leavePosition: {fileID: 0}
   _orderView: {fileID: 1243773023576072181}
+  _animation: {fileID: 0}
   _currentState: 0
 --- !u!195 &6859937636077796359
 NavMeshAgent:

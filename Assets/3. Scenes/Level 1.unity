@@ -4198,6 +4198,7 @@ GameObject:
   - component: {fileID: 1631305599}
   - component: {fileID: 1631305600}
   - component: {fileID: 1631305601}
+  - component: {fileID: 1631305602}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -4313,6 +4314,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6cc6907460298844b90406e1b03f2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dishesForCooking: {fileID: 1631305602}
+--- !u!114 &1631305602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631305594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83aadba08f361654aa557b9f770d4e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAdded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1714750051
 GameObject:
   m_ObjectHideFlags: 0

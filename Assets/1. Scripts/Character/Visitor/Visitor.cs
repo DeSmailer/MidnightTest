@@ -39,7 +39,6 @@ public class Visitor : Character
 
         GoTo(_tablePosition);
         _currentState = VisitorState.MoveToTable;
-
     }
 
     private void Update()
@@ -47,11 +46,14 @@ public class Visitor : Character
         switch (_currentState)
         {
             case VisitorState.MoveToTable:
+                _animator.Play(WALK_ANIMATION);
                 RotateToTable();
                 break;
             case VisitorState.Idle:
+                _animator.Play(IDLE_ANIMATION);
                 break;
             case VisitorState.Leave:
+                _animator.Play(WALK_ANIMATION);
                 break;
             default:
                 break;
@@ -60,7 +62,7 @@ public class Visitor : Character
 
     private void RotateToTable()
     {
-        _animator.Play(WALK_ANIMATION);
+
 
         if (Vector3.Distance(_tablePosition.position, transform.position) <= _stopDistance)
         {

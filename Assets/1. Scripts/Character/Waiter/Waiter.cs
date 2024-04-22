@@ -78,15 +78,20 @@ public class Waiter : Character
         switch (_currentState)
         {
             case WaiterState.Idle:
+                _animator.Play(IDLE_ANIMATION);
                 break;
             case WaiterState.MoveToTable:
+                _animator.Play(WALK_ANIMATION);
                 RotateToPosition(_table.WaiterPosition.position, WaiterState.TakesOrder, TryTakesOrder);
                 break;
             case WaiterState.TakesOrder:
+                _animator.Play(IDLE_ANIMATION);
                 break;
             case WaiterState.GoesForDish:
+                _animator.Play(WALK_ANIMATION);
                 break;
             case WaiterState.TakesTheDish:
+                _animator.Play(IDLE_ANIMATION);
                 break;
             default:
                 break;
