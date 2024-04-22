@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 public abstract class Character : MonoBehaviour
 {
+    protected const string IDLE_ANIMATION = "Mini Chibi Kid | Idle 01";
+    protected const string WALK_ANIMATION = "Mini Chibi Kid | Walk 01";
+
     [SerializeField] protected NavMeshAgent _navMeshAgent;
 
     [SerializeField] protected float _speed = 5f;

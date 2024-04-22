@@ -39,6 +39,7 @@ public class Visitor : Character
 
         GoTo(_tablePosition);
         _currentState = VisitorState.MoveToTable;
+
     }
 
     private void Update()
@@ -59,6 +60,8 @@ public class Visitor : Character
 
     private void RotateToTable()
     {
+        _animator.Play(WALK_ANIMATION);
+
         if (Vector3.Distance(_tablePosition.position, transform.position) <= _stopDistance)
         {
             _navMeshAgent.isStopped = true;
